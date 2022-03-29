@@ -1,0 +1,19 @@
+﻿<DAC type="PX.Objects.CR.BAccount">
+    <Field FieldName="UsrMajorTender" TypeName="string" MapDbTable="BAccount" TextAttributes="#CDATA" StorageName="AddColumn">
+        <CDATA name="TextAttributes"><![CDATA[[PXDBString]
+[PXStringList(
+new string[]
+{
+CustomMajorTenderRelConstraints.MajorTenderConstants.None,
+CustomMajorTenderRelConstraints.MajorTenderConstants.Major,
+CustomMajorTenderRelConstraints.MajorTenderConstants.Tender
+},
+new string[]
+{
+CustomMajorTenderRelConstraints.MajorTenderConstants.None,
+CustomMajorTenderRelConstraints.MajorTenderConstants.Major,
+CustomMajorTenderRelConstraints.MajorTenderConstants.Tender
+})]
+[PXUIField(DisplayName="MajorTender")]]]></CDATA>
+    </Field>
+</DAC>
