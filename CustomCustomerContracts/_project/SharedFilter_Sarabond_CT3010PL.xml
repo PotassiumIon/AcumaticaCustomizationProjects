@@ -14,8 +14,8 @@
         </layout>
         <data>
             <FilterHeader>
-                <row FilterID="0c180673-9eaf-ec11-b70e-00155d000b00" UserName="ktruong" ScreenID="CT3010PL" ViewName="Results" FilterName="Sarabond" IsDefault="1" IsShared="1" IsShortcut="0" IsSystem="0" IsHidden="0" FilterOrder="2">
-                    <FilterRow FilterRowNbr="1" OpenBrackets="0" DataField="Contract_defaultBranchID" Condition="0" ValueSt="SARABOND" CloseBrackets="0" Operator="0" IsUsed="1" FilterType="0" />
+                <row FilterID="6cfb491b-6cb0-ec11-b70e-00155d000b00" UserName="ktruong" ScreenID="CT3010PL" ViewName="Results" FilterName="Sarabond" IsDefault="0" IsShared="1" IsShortcut="0" IsSystem="0" IsHidden="0" FilterOrder="3">
+                    <FilterRow FilterRowNbr="2" OpenBrackets="0" DataField="Branch_branchCD" Condition="0" ValueSt="SARABOND" ValueSt2="" CloseBrackets="0" Operator="0" IsUsed="1" FilterType="0" />
                 </row>
             </FilterHeader>
         </data>

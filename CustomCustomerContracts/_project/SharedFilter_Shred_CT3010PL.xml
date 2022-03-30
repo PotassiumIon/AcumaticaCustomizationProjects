@@ -14,11 +14,8 @@
         </layout>
         <data>
             <FilterHeader>
-                <row FilterID="181c95b2-a4af-ec11-b70e-00155d000b00" UserName="ktruong" ScreenID="CT3010PL" ViewName="Results" FilterName="Shred" IsDefault="0" IsShared="1" IsShortcut="0" IsSystem="0" IsHidden="0" FilterOrder="3">
-                    <FilterRow FilterRowNbr="4" OpenBrackets="0" DataField="Contract_defaultBranchID" Condition="0" ValueSt="SHRED LM" CloseBrackets="0" Operator="0" IsUsed="1" FilterType="0" />
-                    <FilterRow FilterRowNbr="3" OpenBrackets="0" DataField="Contract_defaultBranchID" Condition="0" ValueSt="SHRED HO" CloseBrackets="0" Operator="0" IsUsed="1" FilterType="0" />
-                    <FilterRow FilterRowNbr="2" OpenBrackets="0" DataField="Contract_defaultBranchID" Condition="0" ValueSt="SHRED EDM" CloseBrackets="0" Operator="0" IsUsed="1" FilterType="0" />
-                    <FilterRow FilterRowNbr="1" OpenBrackets="0" DataField="Contract_defaultBranchID" Condition="0" ValueSt="SHRED CAL" CloseBrackets="0" Operator="0" IsUsed="1" FilterType="0" />
+                <row FilterID="a8be8df2-6bb0-ec11-b70e-00155d000b00" UserName="ktruong" ScreenID="CT3010PL" ViewName="Results" FilterName="Shred" IsDefault="0" IsShared="1" IsShortcut="0" IsSystem="0" IsHidden="0" FilterOrder="2">
+                    <FilterRow FilterRowNbr="1" OpenBrackets="0" DataField="BranchBAccount_organizationID" Condition="0" ValueSt="SHRED" CloseBrackets="0" Operator="0" IsUsed="1" FilterType="0" />
                 </row>
             </FilterHeader>
         </data>
