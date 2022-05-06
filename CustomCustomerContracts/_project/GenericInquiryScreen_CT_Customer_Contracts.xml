@@ -193,7 +193,16 @@
                     <SiteMap linkname="toDesignById">
                         <row Position="60" Title="Customer Contracts" Url="~/GenericInquiry/GenericInquiry.aspx?id=11e98a21-22bd-4b3d-8e6f-4768b8be4440" ScreenID="CT3010PL" NodeID="b2034dfa-d8f0-4328-ab3c-9b84c6b5380b" ParentID="12167736-ae7e-46ab-8a8c-dd4b86217519">
                             <ListEntryPoint EntryScreenID="CT301000" IsActive="1" />
-                            <MUIScreen IsPortal="0" WorkspaceID="00000000-0000-0000-0000-000000000000" Order="642132" SubcategoryID="aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa" />
+                            <FilterHeader FilterID="048d7fde-a0b6-ec11-b70e-00155d000b00" UserName="ktruong" ViewName="Results" FilterName="shred" IsDefault="0" IsShared="1" IsShortcut="0" IsSystem="0" IsHidden="0" FilterOrder="3">
+                                <FilterRow FilterRowNbr="4" OpenBrackets="0" DataField="Branch_branchCD" Condition="0" ValueSt="SHRED LM" ValueSt2="" CloseBrackets="0" Operator="0" IsUsed="1" FilterType="0" />
+                                <FilterRow FilterRowNbr="3" OpenBrackets="0" DataField="Branch_branchCD" Condition="0" ValueSt="SHRED HO" ValueSt2="" CloseBrackets="0" Operator="0" IsUsed="1" FilterType="0" />
+                                <FilterRow FilterRowNbr="2" OpenBrackets="0" DataField="Branch_branchCD" Condition="0" ValueSt="SHRED EDM" ValueSt2="" CloseBrackets="0" Operator="0" IsUsed="1" FilterType="0" />
+                                <FilterRow FilterRowNbr="1" OpenBrackets="0" DataField="Branch_branchCD" Condition="0" ValueSt="SHRED CAL" ValueSt2="" CloseBrackets="0" Operator="0" IsUsed="1" FilterType="0" />
+                            </FilterHeader>
+                            <FilterHeader FilterID="ab6ea2a7-a0b6-ec11-b70e-00155d000b00" UserName="ktruong" ViewName="Results" FilterName="sarabond" IsDefault="0" IsShared="1" IsShortcut="0" IsSystem="0" IsHidden="0" FilterOrder="2">
+                                <FilterRow FilterRowNbr="1" OpenBrackets="0" DataField="Branch_branchCD" Condition="0" ValueSt="SARABOND" ValueSt2="" CloseBrackets="0" Operator="0" IsUsed="1" FilterType="0" />
+                            </FilterHeader>
+                            <MUIScreen IsPortal="0" WorkspaceID="00000000-0000-0000-0000-000000000000" Order="642152" SubcategoryID="aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa" />
                         </row>
                     </SiteMap>
                     <SiteMap linkname="to1Screen">

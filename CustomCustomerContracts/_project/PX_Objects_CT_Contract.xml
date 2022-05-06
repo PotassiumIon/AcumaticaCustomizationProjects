@@ -1,0 +1,3 @@
+﻿<DAC type="PX.Objects.CT.Contract">
+    <Field FieldName="WorkgroupID" TypeName="int" OverrideClassName="PX.Objects.CT.Contract" StorageName="ExistingColumn" />
+</DAC>
