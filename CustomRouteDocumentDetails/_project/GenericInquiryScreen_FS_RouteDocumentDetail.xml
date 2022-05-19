@@ -152,7 +152,13 @@
                     <GITable Alias="Users" Name="PX.SM.Users">
                         <GIResult LineNbr="20" SortOrder="20" IsActive="1" Field="username" SchemaField="FSRouteDocument.CreatedByID" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="5194c2aa-75a6-4e79-859e-60995f7bb7da" />
                     </GITable>
+                    <GITable Alias="Organization" Name="PX.Objects.GL.DAC.Organization">
+                        <GIResult LineNbr="27" SortOrder="25" IsActive="1" Field="organizationCD" SchemaField="Organization.OrganizationName" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="0" RowID="6f0db029-d910-49da-9b22-e062ecf2d9ee" />
+                    </GITable>
                     <GITable Alias="FSRouteDocument" Name="PX.Objects.FS.FSRouteDocument">
+                        <GIRelation LineNbr="9" ChildTable="Branch" IsActive="1" JoinType="I">
+                            <GIOn LineNbr="8" ParentField="branchID" Condition="E " ChildField="branchID" Operation="A" />
+                        </GIRelation>
                         <GIRelation LineNbr="7" ChildTable="UsersLM" IsActive="1" JoinType="L">
                             <GIOn LineNbr="7" ParentField="lastModifiedByID" Condition="E " ChildField="pKID" Operation="A" />
                         </GIRelation>
@@ -195,6 +201,17 @@
                     <GITable Alias="DriverEmployee" Name="PX.Objects.EP.EPEmployee">
                         <GIResult LineNbr="7" SortOrder="7" IsActive="1" Field="acctCD" SchemaField="FSRouteDocument.DriverID" IsVisible="1" DefaultNav="0" QuickFilter="1" FastFilter="1" RowID="50b29f3a-6131-48cb-bfbc-14945e1f1756" />
                     </GITable>
+                    <GITable Alias="DateInfo" Name="PX.SM.DateInfo" />
+                    <GITable Alias="CurrentBranch" Name="PX.Objects.GL.CurrentBranch" />
+                    <GITable Alias="Branch" Name="PX.Objects.GL.Branch">
+                        <GIRelation LineNbr="11" ChildTable="CurrentBranch" IsActive="1" JoinType="R">
+                            <GIOn LineNbr="10" ParentField="branchID" Condition="E " ChildField="branchID" Operation="A" />
+                        </GIRelation>
+                        <GIRelation LineNbr="10" ChildTable="Organization" IsActive="1" JoinType="I">
+                            <GIOn LineNbr="9" ParentField="organizationID" Condition="E " ChildField="organizationID" Operation="A" />
+                        </GIRelation>
+                        <GIResult LineNbr="26" SortOrder="24" IsActive="1" Field="branchCD" SchemaField="FSRouteDocument.BranchID" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="0" RowID="f7f524c7-e2b7-4465-8cee-0535ffcaa917" />
+                    </GITable>
                     <GITable Alias="AdditionalVehicle1" Name="PX.Objects.FS.FSEquipment">
                         <GIResult LineNbr="15" SortOrder="15" IsActive="1" Field="descr" SchemaField="AdditionalVehicle1.MemDescrAdditionalVehicle1" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="93936f14-d8c5-47af-8dca-637efd7d8ab7" />
                         <GIResult LineNbr="14" SortOrder="14" IsActive="1" Field="refNbr" SchemaField="FSRouteDocument.AdditionalVehicleID1" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="91b40157-a17a-4de0-9233-5a0aa3fa5fb6" />
@@ -202,6 +219,7 @@
                     <GITable Alias="AdditionalDriverEmployee" Name="PX.Objects.EP.EPEmployee">
                         <GIResult LineNbr="25" SortOrder="12" IsActive="1" Field="acctCD" SchemaField="FSRouteDocument.AdditionalDriverID" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="faaac31b-9e5e-458e-83a9-7e3ca52434b5" />
                     </GITable>
+                    <GIWhere LineNbr="1" IsActive="1" DataFieldName="FSRouteDocument.date" Condition="E " IsExpression="1" Value1="@Today" Operation="A" />
                     <SiteMap linkname="toDesignById">
                         <row Position="1110" Title="Route Document Details" Url="~/GenericInquiry/GenericInquiry.aspx?id=a06bfcf5-e4f9-49cb-9a67-2b8492cfa87e" ScreenID="FS3040PL" NodeID="b8890925-9041-464a-9f2e-de45111cad2f" ParentID="00000000-0000-0000-0000-000000000000">
                             <ListEntryPoint EntryScreenID="FS304000" IsActive="1" />

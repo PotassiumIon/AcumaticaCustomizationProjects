@@ -38,8 +38,8 @@
         </layout>
         <data>
             <Dashboard>
-                <row DashboardID="1000262" Name="RouteDocumentDetails" DefaultOwnerRole="DashboardDesigner" ScreenID="DB000038" AllowCopy="0" Workspace1Size="12" Workspace2Size="0" IsPortal="0" ExposeViaMobile="0" NoteID="a8f261b8-54d1-ec11-b70f-00155d000b00">
-                    <Widget WidgetID="1067" Caption="Route Document Details" Column="0" Row="0" Workspace="0" Width="12" Height="988" Type="PX.Dashboards.Widgets.PXTableWidget" NoteID="1503ab04-55d1-ec11-b70f-00155d000b00">
+                <row DashboardID="1000263" Name="RouteDocumentDetails" DefaultOwnerRole="DashboardDesigner" ScreenID="DB000038" AllowCopy="1" Workspace1Size="0" Workspace2Size="0" IsPortal="0" ExposeViaMobile="1" NoteID="d072450a-56d5-ec11-b70f-00155d000b00">
+                    <Widget WidgetID="1068" Caption="Live Data (5 mins.)" Column="0" Row="0" Workspace="0" Width="12" Height="410" Type="PX.Dashboards.Widgets.PXTableWidget" NoteID="771b3028-56d5-ec11-b70f-00155d000b00">
                         <column name="Settings"><![CDATA[<?xml version="1.0" encoding="utf-16"?>
 <TableSettings>
   <InquiryScreenID>FS3040PL</InquiryScreenID>
@@ -49,84 +49,69 @@
   <Columns>
     <TableColumn>
       <DataField>FSRouteDocument_RefNbr</DataField>
-      <Width>112</Width>
       <Visible>true</Visible>
       <Position>0</Position>
     </TableColumn>
     <TableColumn>
       <DataField>FSRoute_RouteCD</DataField>
-      <Width>159</Width>
       <Visible>true</Visible>
       <Position>1</Position>
     </TableColumn>
     <TableColumn>
       <DataField>DriverEmployee_AcctCD</DataField>
-      <Width>84</Width>
       <Visible>true</Visible>
       <Position>2</Position>
     </TableColumn>
     <TableColumn>
       <DataField>Vehicle_RefNbr</DataField>
-      <Width>56</Width>
       <Visible>true</Visible>
       <Position>3</Position>
     </TableColumn>
     <TableColumn>
       <DataField>FSRouteDocument_tripNbr</DataField>
-      <Width>53</Width>
       <Visible>true</Visible>
       <Position>4</Position>
     </TableColumn>
     <TableColumn>
       <DataField>FSRouteDocument_status</DataField>
-      <Width>86</Width>
       <Visible>true</Visible>
       <Position>5</Position>
     </TableColumn>
     <TableColumn>
       <DataField>FSRouteDocument_date</DataField>
-      <Width>124</Width>
       <Visible>true</Visible>
       <Position>6</Position>
     </TableColumn>
     <TableColumn>
       <DataField>FSRoute_descr</DataField>
-      <Width>171</Width>
       <Visible>true</Visible>
       <Position>7</Position>
     </TableColumn>
     <TableColumn>
       <DataField>FSRouteDocument_driverID_description</DataField>
-      <Width>142</Width>
       <Visible>true</Visible>
       <Position>8</Position>
     </TableColumn>
     <TableColumn>
       <DataField>Vehicle_descr</DataField>
-      <Width>23</Width>
       <Visible>true</Visible>
       <Position>9</Position>
     </TableColumn>
     <TableColumn>
       <DataField>FSRouteDocument_totalNumAppointments</DataField>
-      <Width>153</Width>
       <Visible>true</Visible>
       <Position>10</Position>
     </TableColumn>
     <TableColumn>
       <DataField>AdditionalDriverEmployee_AcctCD</DataField>
-      <Width>144</Width>
-      <Visible>true</Visible>
-      <Position>11</Position>
-    </TableColumn>
-    <TableColumn>
-      <DataField>AdditionalVehicle1_RefNbr</DataField>
-      <Width>141</Width>
-      <Visible>true</Visible>
-      <Position>12</Position>
+      <Visible>false</Visible>
     </TableColumn>
     <TableColumn>
       <DataField>AdditionalVehicle1_descr</DataField>
+      <Visible>false</Visible>
+    </TableColumn>
+    <TableColumn>
+      <DataField>AdditionalVehicle1_RefNbr</DataField>
       <Visible>false</Visible>
     </TableColumn>
     <TableColumn>
@@ -159,19 +144,17 @@
     </TableColumn>
     <TableColumn>
       <DataField>Users_Username</DataField>
-      <Width>220</Width>
       <Visible>false</Visible>
     </TableColumn>
     <TableColumn>
       <DataField>UsersLM_Username</DataField>
-      <Width>220</Width>
       <Visible>false</Visible>
     </TableColumn>
   </Columns>
 </TableSettings>]]></column>
                     </Widget>
-                    <SiteMap Title="RouteDocumentDetailsDashboard" Url="~/Frames/Default.aspx" NodeID="448890a1-902c-4640-a465-9862bf12d701" ParentID="00000000-0000-0000-0000-000000000000">
-                        <MUIScreen IsPortal="0" WorkspaceID="bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb" Order="30" SubcategoryID="29d8e453-ee74-405d-abe1-930728d1f9ba">
+                    <SiteMap Title="Route Document Details" Url="~/Frames/Default.aspx" NodeID="350f3546-efb7-4636-baac-2bfaf79b2445" ParentID="00000000-0000-0000-0000-000000000000">
+                        <MUIScreen IsPortal="0" WorkspaceID="bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb" Order="40" SubcategoryID="29d8e453-ee74-405d-abe1-930728d1f9ba">
                             <MUIPinnedScreen IsPortal="0" Username="" IsPinned="1" />
                         </MUIScreen>
                     </SiteMap>
