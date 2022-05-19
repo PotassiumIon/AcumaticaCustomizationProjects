@@ -187,10 +187,10 @@
                         <GIResult LineNbr="18" SortOrder="18" IsActive="1" Field="totalDuration" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="648e9bf5-6647-41e2-a5fb-f59aa760385d" />
                         <GIResult LineNbr="17" SortOrder="17" IsActive="1" Field="totalServicesDuration" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="65a1d786-124a-4d1b-8647-3f6a9a19d56e" />
                         <GIResult LineNbr="16" SortOrder="16" IsActive="1" Field="totalDistanceFriendly" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="25b028ad-a48d-4d6c-be56-1b2dc0c897f6" />
-                        <GIResult LineNbr="13" SortOrder="13" IsActive="1" Field="additionalDriverID_description" SchemaField="FSRouteDocument.MemAdditionalDriverName" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="fc7d2b6c-657f-470c-acbf-83ef6a2dda99" />
+                        <GIResult LineNbr="13" SortOrder="13" IsActive="1" Field="additionalDriverID_description" SchemaField="FSRouteDocument.MemAdditionalDriverName" IsVisible="1" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="fc7d2b6c-657f-470c-acbf-83ef6a2dda99" />
                         <GIResult LineNbr="11" SortOrder="11" IsActive="1" Field="totalNumAppointments" IsVisible="1" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="6a809a04-e808-43cc-99ee-a6c91f67eefe" />
-                        <GIResult LineNbr="4" SortOrder="4" IsActive="1" Field="date" IsVisible="1" DefaultNav="0" QuickFilter="1" FastFilter="0" RowID="e0190013-49e9-4318-891b-463010a4ace6" />
-                        <GIResult LineNbr="3" SortOrder="3" IsActive="1" Field="status" StyleFormula="=Switch(	[FSRouteDocument.Status] = 'O', 'red40',	[FSRouteDocument.Status] = 'P', 'green40',	[FSRouteDocument.Status] = 'X', 'default',	[FSRouteDocument.Status] = 'C', 'blue40',	[FSRouteDocument.Status] = 'Z', 'default')" IsVisible="1" DefaultNav="0" QuickFilter="1" FastFilter="1" RowID="4c0f051f-ca63-41d2-9496-a563e6664293" />
+                        <GIResult LineNbr="4" SortOrder="4" IsActive="1" Field="date" StyleFormula="=IIF(NOT [FSRouteDocument.Date] = @Today,'blue60',Null)" IsVisible="1" DefaultNav="0" QuickFilter="1" FastFilter="0" RowID="e0190013-49e9-4318-891b-463010a4ace6" />
+                        <GIResult LineNbr="3" SortOrder="3" IsActive="1" Field="status" StyleFormula="=Switch(	[FSRouteDocument.Status] = 'O','red60',	[FSRouteDocument.Status] = 'P', 'green60',	[FSRouteDocument.Status] = 'X', 'default',	[FSRouteDocument.Status] = 'C', 'default',	[FSRouteDocument.Status] = 'Z', 'default')" IsVisible="1" DefaultNav="0" QuickFilter="1" FastFilter="1" RowID="4c0f051f-ca63-41d2-9496-a563e6664293" />
                         <GIResult LineNbr="2" SortOrder="2" IsActive="1" Field="tripNbr" IsVisible="1" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="99ad44f2-c385-40bc-a7a6-ce447cd48967" />
                         <GIResult LineNbr="1" SortOrder="1" IsActive="1" Field="refNbr" IsVisible="1" DefaultNav="0" NavigationNbr="1" QuickFilter="0" FastFilter="1" RowID="3a182e7f-45f3-4aa0-935e-ff322d975e46" />
                     </GITable>
@@ -199,27 +199,25 @@
                         <GIResult LineNbr="5" SortOrder="5" IsActive="1" Field="routeCD" SchemaField="FSRouteDocument.RouteID" IsVisible="1" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="9ef8d8d2-58c2-46a1-8f36-005073132f78" />
                     </GITable>
                     <GITable Alias="DriverEmployee" Name="PX.Objects.EP.EPEmployee">
-                        <GIResult LineNbr="7" SortOrder="7" IsActive="1" Field="acctCD" SchemaField="FSRouteDocument.DriverID" IsVisible="1" DefaultNav="0" QuickFilter="1" FastFilter="1" RowID="50b29f3a-6131-48cb-bfbc-14945e1f1756" />
+                        <GIResult LineNbr="7" SortOrder="7" IsActive="1" Field="acctCD" SchemaField="FSRouteDocument.DriverID" IsVisible="1" DefaultNav="1" QuickFilter="1" FastFilter="1" RowID="50b29f3a-6131-48cb-bfbc-14945e1f1756" />
                     </GITable>
-                    <GITable Alias="DateInfo" Name="PX.SM.DateInfo" />
                     <GITable Alias="CurrentBranch" Name="PX.Objects.GL.CurrentBranch" />
                     <GITable Alias="Branch" Name="PX.Objects.GL.Branch">
                         <GIRelation LineNbr="11" ChildTable="CurrentBranch" IsActive="1" JoinType="R">
-                            <GIOn LineNbr="10" ParentField="branchID" Condition="E " ChildField="branchID" Operation="A" />
+                            <GIOn LineNbr="10" ParentField="organizationID" Condition="E " ChildField="organizationID" Operation="A" />
                         </GIRelation>
                         <GIRelation LineNbr="10" ChildTable="Organization" IsActive="1" JoinType="I">
                             <GIOn LineNbr="9" ParentField="organizationID" Condition="E " ChildField="organizationID" Operation="A" />
                         </GIRelation>
-                        <GIResult LineNbr="26" SortOrder="24" IsActive="1" Field="branchCD" SchemaField="FSRouteDocument.BranchID" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="0" RowID="f7f524c7-e2b7-4465-8cee-0535ffcaa917" />
+                        <GIResult LineNbr="26" SortOrder="24" IsActive="1" Field="branchCD" SchemaField="FSRouteDocument.BranchID" IsVisible="1" DefaultNav="0" QuickFilter="0" FastFilter="0" RowID="f7f524c7-e2b7-4465-8cee-0535ffcaa917" />
                     </GITable>
                     <GITable Alias="AdditionalVehicle1" Name="PX.Objects.FS.FSEquipment">
                         <GIResult LineNbr="15" SortOrder="15" IsActive="1" Field="descr" SchemaField="AdditionalVehicle1.MemDescrAdditionalVehicle1" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="93936f14-d8c5-47af-8dca-637efd7d8ab7" />
                         <GIResult LineNbr="14" SortOrder="14" IsActive="1" Field="refNbr" SchemaField="FSRouteDocument.AdditionalVehicleID1" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="91b40157-a17a-4de0-9233-5a0aa3fa5fb6" />
                     </GITable>
                     <GITable Alias="AdditionalDriverEmployee" Name="PX.Objects.EP.EPEmployee">
-                        <GIResult LineNbr="25" SortOrder="12" IsActive="1" Field="acctCD" SchemaField="FSRouteDocument.AdditionalDriverID" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="faaac31b-9e5e-458e-83a9-7e3ca52434b5" />
+                        <GIResult LineNbr="25" SortOrder="12" IsActive="1" Field="acctCD" SchemaField="FSRouteDocument.AdditionalDriverID" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="1" RowID="faaac31b-9e5e-458e-83a9-7e3ca52434b5" />
                     </GITable>
-                    <GIWhere LineNbr="1" IsActive="1" DataFieldName="FSRouteDocument.date" Condition="E " IsExpression="1" Value1="@Today" Operation="A" />
                     <SiteMap linkname="toDesignById">
                         <row Position="1110" Title="Route Document Details" Url="~/GenericInquiry/GenericInquiry.aspx?id=a06bfcf5-e4f9-49cb-9a67-2b8492cfa87e" ScreenID="FS3040PL" NodeID="b8890925-9041-464a-9f2e-de45111cad2f" ParentID="00000000-0000-0000-0000-000000000000">
                             <ListEntryPoint EntryScreenID="FS304000" IsActive="1" />

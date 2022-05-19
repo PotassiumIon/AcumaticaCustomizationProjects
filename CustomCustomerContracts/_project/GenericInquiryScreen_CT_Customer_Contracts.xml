@@ -145,64 +145,53 @@
                         <GINavigationParameter LineNbr="1" FieldName="ContractCD" ParameterName="Contract.ContractCD" IsExpression="0" />
                     </GINavigationScreen>
                     <GISort LineNbr="1" IsActive="1" DataFieldName="Contract.createdDateTime" SortOrder="D" />
+                    <GITable Alias="Organization" Name="PX.Objects.GL.DAC.Organization" />
                     <GITable Alias="Features" Name="PX.Objects.CS.FeaturesSet" />
-                    <GITable Alias="Contracttemplate" Name="PX.Objects.CT.ContractTemplate">
-                        <GIResult LineNbr="10" SortOrder="10" IsActive="1" Field="description" IsVisible="1" DefaultNav="0" QuickFilter="0" FastFilter="0" RowID="192e03bd-d182-e711-832a-600292a4d6c0" />
-                        <GIResult LineNbr="9" SortOrder="9" IsActive="1" Field="contractCD" Width="100" IsVisible="1" DefaultNav="0" QuickFilter="0" FastFilter="0" RowID="182e03bd-d182-e711-832a-600292a4d6c0" />
-                    </GITable>
+                    <GITable Alias="CurrentBranch" Name="PX.Objects.GL.CurrentBranch" />
+                    <GITable Alias="ContractTemplate" Name="PX.Objects.CT.ContractTemplate" />
                     <GITable Alias="Contract" Name="PX.Objects.CT.Contract">
-                        <GIRelation LineNbr="6" ChildTable="Branch" IsActive="1" JoinType="L" />
-                        <GIRelation LineNbr="5" ChildTable="Features" IsActive="1" JoinType="C" />
-                        <GIRelation LineNbr="4" ChildTable="Contracttemplate" IsActive="1" JoinType="L">
-                            <GIOn LineNbr="22" ParentField="templateID" Condition="E " ChildField="contractID" Operation="A" />
+                        <GIRelation LineNbr="10" ChildTable="Branch" IsActive="1" JoinType="L">
+                            <GIOn LineNbr="3" ParentField="defaultBranchID" Condition="E " ChildField="branchID" Operation="A" />
                         </GIRelation>
-                        <GIRelation LineNbr="3" ChildTable="BAccountR" IsActive="1" JoinType="L">
-                            <GIOn LineNbr="21" ParentField="customerID" Condition="E " ChildField="bAccountID" Operation="A" />
+                        <GIRelation LineNbr="9" ChildTable="Features" IsActive="1" JoinType="C" />
+                        <GIRelation LineNbr="8" ChildTable="ContractTemplate" IsActive="1" JoinType="L">
+                            <GIOn LineNbr="2" ParentField="templateID" Condition="E " ChildField="contractID" Operation="A" />
                         </GIRelation>
-                        <GIResult LineNbr="17" SortOrder="17" IsActive="1" Field="defaultBranchID" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="0" RowID="f22e2f93-9214-43a1-aad8-a5688e7e3b95" />
-                        <GIResult LineNbr="16" SortOrder="16" IsActive="1" Field="lastModifiedDateTime" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="0" RowID="172e03bd-d182-e711-832a-600292a4d6c0" />
-                        <GIResult LineNbr="15" SortOrder="15" IsActive="1" Field="lastModifiedByID_description" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="0" RowID="162e03bd-d182-e711-832a-600292a4d6c0" />
-                        <GIResult LineNbr="14" SortOrder="14" IsActive="1" Field="createdDateTime" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="0" RowID="152e03bd-d182-e711-832a-600292a4d6c0" />
-                        <GIResult LineNbr="13" SortOrder="13" IsActive="1" Field="createdByID_description" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="0" RowID="142e03bd-d182-e711-832a-600292a4d6c0" />
-                        <GIResult LineNbr="12" SortOrder="12" IsActive="1" Field="status" Width="80" IsVisible="1" DefaultNav="0" QuickFilter="1" FastFilter="0" RowID="0e2e03bd-d182-e711-832a-600292a4d6c0" />
-                        <GIResult LineNbr="11" SortOrder="11" IsActive="1" Field="curyID" Width="70" IsVisible="1" DefaultNav="0" QuickFilter="0" FastFilter="0" RowID="132e03bd-d182-e711-832a-600292a4d6c0" />
-                        <GIResult LineNbr="8" SortOrder="8" IsActive="1" Field="expireDate" Width="90" IsVisible="1" DefaultNav="0" QuickFilter="1" FastFilter="0" RowID="122e03bd-d182-e711-832a-600292a4d6c0" />
-                        <GIResult LineNbr="7" SortOrder="7" IsActive="1" Field="activationDate" Width="90" IsVisible="1" DefaultNav="0" QuickFilter="0" FastFilter="0" RowID="112e03bd-d182-e711-832a-600292a4d6c0" />
-                        <GIResult LineNbr="6" SortOrder="6" IsActive="1" Field="startDate" Width="90" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="0" RowID="102e03bd-d182-e711-832a-600292a4d6c0" />
-                        <GIResult LineNbr="5" SortOrder="5" IsActive="1" Field="balance" Width="100" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="0" RowID="0f2e03bd-d182-e711-832a-600292a4d6c0" />
+                        <GIRelation LineNbr="7" ChildTable="BAccount" IsActive="1" JoinType="L">
+                            <GIOn LineNbr="1" ParentField="customerID" Condition="E " ChildField="bAccountID" Operation="A" />
+                        </GIRelation>
+                        <GIResult LineNbr="18" SortOrder="19" IsActive="1" Field="workgroupID" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="0" RowID="ce0d7467-c93b-4175-8a4b-e67728866b07" />
+                        <GIResult LineNbr="17" SortOrder="18" IsActive="1" Field="defaultBranchID" IsVisible="1" DefaultNav="0" QuickFilter="0" FastFilter="0" RowID="f22e2f93-9214-43a1-aad8-a5688e7e3b95" />
+                        <GIResult LineNbr="16" SortOrder="17" IsActive="1" Field="lastModifiedDateTime" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="0" RowID="172e03bd-d182-e711-832a-600292a4d6c0" />
+                        <GIResult LineNbr="15" SortOrder="16" IsActive="1" Field="lastModifiedByID_description" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="0" RowID="162e03bd-d182-e711-832a-600292a4d6c0" />
+                        <GIResult LineNbr="14" SortOrder="15" IsActive="1" Field="createdDateTime" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="0" RowID="152e03bd-d182-e711-832a-600292a4d6c0" />
+                        <GIResult LineNbr="13" SortOrder="14" IsActive="1" Field="createdByID_description" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="0" RowID="142e03bd-d182-e711-832a-600292a4d6c0" />
+                        <GIResult LineNbr="12" SortOrder="13" IsActive="1" Field="status" Width="80" IsVisible="1" DefaultNav="0" QuickFilter="1" FastFilter="0" RowID="0e2e03bd-d182-e711-832a-600292a4d6c0" />
+                        <GIResult LineNbr="11" SortOrder="12" IsActive="1" Field="curyID" Width="70" IsVisible="1" DefaultNav="0" QuickFilter="0" FastFilter="0" RowID="132e03bd-d182-e711-832a-600292a4d6c0" />
+                        <GIResult LineNbr="8" SortOrder="9" IsActive="1" Field="expireDate" Width="90" IsVisible="1" DefaultNav="0" QuickFilter="1" FastFilter="0" RowID="122e03bd-d182-e711-832a-600292a4d6c0" />
+                        <GIResult LineNbr="7" SortOrder="8" IsActive="1" Field="activationDate" Width="90" IsVisible="1" DefaultNav="0" QuickFilter="0" FastFilter="0" RowID="112e03bd-d182-e711-832a-600292a4d6c0" />
+                        <GIResult LineNbr="6" SortOrder="7" IsActive="1" Field="startDate" Width="90" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="0" RowID="102e03bd-d182-e711-832a-600292a4d6c0" />
+                        <GIResult LineNbr="5" SortOrder="6" IsActive="1" Field="balance" Width="100" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="0" RowID="0f2e03bd-d182-e711-832a-600292a4d6c0" />
                         <GIResult LineNbr="2" SortOrder="2" IsActive="1" Field="description" IsVisible="1" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="0d2e03bd-d182-e711-832a-600292a4d6c0" />
                         <GIResult LineNbr="1" SortOrder="1" IsActive="1" Field="contractCD" Width="100" IsVisible="1" DefaultNav="0" NavigationNbr="1" QuickFilter="0" FastFilter="1" RowID="0c2e03bd-d182-e711-832a-600292a4d6c0" />
                     </GITable>
-                    <GITable Alias="BranchBAccount" Name="PX.Objects.CS.BranchMaint+BranchBAccount">
-                        <GIResult LineNbr="18" SortOrder="18" IsActive="1" Field="organizationID" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="a2b21c1e-403e-44f8-b12f-1ced5356d507" />
-                    </GITable>
                     <GITable Alias="Branch" Name="PX.Objects.GL.Branch">
-                        <GIRelation LineNbr="7" ChildTable="BranchBAccount" IsActive="1" JoinType="L">
-                            <GIOn LineNbr="23" ParentField="branchCD" Condition="E " ChildField="acctCD" Operation="A" />
+                        <GIRelation LineNbr="11" ChildTable="CurrentBranch" IsActive="1" JoinType="I">
+                            <GIOn LineNbr="4" ParentField="organizationID" Condition="E " ChildField="organizationID" Operation="A" />
                         </GIRelation>
-                        <GIResult LineNbr="19" SortOrder="19" IsActive="1" Field="branchCD" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="50f2d518-0bab-4993-82c1-e60a9bdd0253" />
+                        <GIResult LineNbr="20" SortOrder="20" IsActive="1" Field="organizationID" IsVisible="1" DefaultNav="0" QuickFilter="0" FastFilter="0" RowID="0f0ad44b-fb39-4d4c-8dcf-534ede9ca3cb" />
                     </GITable>
-                    <GITable Alias="BAccountR" Name="PX.Objects.CR.BAccount">
+                    <GITable Alias="BAccount" Name="PX.Objects.CR.BAccount">
+                        <GIResult LineNbr="19" SortOrder="5" IsActive="1" Field="acctName" IsVisible="1" DefaultNav="0" QuickFilter="0" FastFilter="0" RowID="c754df86-ac5c-4412-bfb1-5a7e2945cc0e" />
                         <GIResult LineNbr="4" SortOrder="4" IsActive="1" Field="acctCD" SchemaField="Contract.CustomerID" Width="100" IsVisible="1" DefaultNav="0" NavigationNbr="2" QuickFilter="0" FastFilter="0" RowID="0b2e03bd-d182-e711-832a-600292a4d6c0" />
                     </GITable>
-                    <GITable Alias="AccessInfo" Name="PX.Data.AccessInfo" />
-                    <GIWhere LineNbr="4" IsActive="1" DataFieldName="Branch.branchID" Condition="E " IsExpression="0" Value1="=[AccessInfo.BranchID]" Operation="A" />
-                    <GIWhere LineNbr="3" IsActive="1" DataFieldName="Features.visibilityRestriction" Condition="E " IsExpression="0" Value1="0" CloseBrackets=")        " Operation="A" />
-                    <GIWhere LineNbr="2" IsActive="1" OpenBrackets="(        " DataFieldName="BAccountR.cOrgBAccountID" Condition="E " IsExpression="0" Value1="@Me" Operation="O" />
-                    <GIWhere LineNbr="1" IsActive="1" DataFieldName="Contract.baseType" Condition="E " IsExpression="0" Value1="C" Operation="A" />
+                    <GIWhere LineNbr="5" IsActive="1" DataFieldName="Features.visibilityRestriction" Condition="E " IsExpression="0" Value1="1" Operation="A" />
+                    <GIWhere LineNbr="4" IsActive="1" DataFieldName="BAccount.cOrgBAccountID" Condition="E " IsExpression="0" Value1="@Me" Operation="O" />
+                    <GIWhere LineNbr="3" IsActive="0" DataFieldName="Contract.baseType" Condition="E " IsExpression="0" Value1="C" Operation="A" />
                     <SiteMap linkname="toDesignById">
                         <row Position="60" Title="Customer Contracts" Url="~/GenericInquiry/GenericInquiry.aspx?id=11e98a21-22bd-4b3d-8e6f-4768b8be4440" ScreenID="CT3010PL" NodeID="b2034dfa-d8f0-4328-ab3c-9b84c6b5380b" ParentID="12167736-ae7e-46ab-8a8c-dd4b86217519">
                             <ListEntryPoint EntryScreenID="CT301000" IsActive="1" />
-                            <FilterHeader FilterID="048d7fde-a0b6-ec11-b70e-00155d000b00" UserName="ktruong" ViewName="Results" FilterName="shred" IsDefault="0" IsShared="1" IsShortcut="0" IsSystem="0" IsHidden="0" FilterOrder="3">
-                                <FilterRow FilterRowNbr="4" OpenBrackets="0" DataField="Branch_branchCD" Condition="0" ValueSt="SHRED LM" ValueSt2="" CloseBrackets="0" Operator="0" IsUsed="1" FilterType="0" />
-                                <FilterRow FilterRowNbr="3" OpenBrackets="0" DataField="Branch_branchCD" Condition="0" ValueSt="SHRED HO" ValueSt2="" CloseBrackets="0" Operator="0" IsUsed="1" FilterType="0" />
-                                <FilterRow FilterRowNbr="2" OpenBrackets="0" DataField="Branch_branchCD" Condition="0" ValueSt="SHRED EDM" ValueSt2="" CloseBrackets="0" Operator="0" IsUsed="1" FilterType="0" />
-                                <FilterRow FilterRowNbr="1" OpenBrackets="0" DataField="Branch_branchCD" Condition="0" ValueSt="SHRED CAL" ValueSt2="" CloseBrackets="0" Operator="0" IsUsed="1" FilterType="0" />
-                            </FilterHeader>
-                            <FilterHeader FilterID="ab6ea2a7-a0b6-ec11-b70e-00155d000b00" UserName="ktruong" ViewName="Results" FilterName="sarabond" IsDefault="0" IsShared="1" IsShortcut="0" IsSystem="0" IsHidden="0" FilterOrder="2">
-                                <FilterRow FilterRowNbr="1" OpenBrackets="0" DataField="Branch_branchCD" Condition="0" ValueSt="SARABOND" ValueSt2="" CloseBrackets="0" Operator="0" IsUsed="1" FilterType="0" />
-                            </FilterHeader>
-                            <MUIScreen IsPortal="0" WorkspaceID="00000000-0000-0000-0000-000000000000" Order="642152" SubcategoryID="aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa" />
+                            <MUIScreen IsPortal="0" WorkspaceID="00000000-0000-0000-0000-000000000000" Order="642172" SubcategoryID="aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa" />
                         </row>
                     </SiteMap>
                     <SiteMap linkname="to1Screen">
@@ -213,6 +202,7 @@
                             <MUITile IsPortal="0" TileID="3760b26d-c767-4332-9015-887fc2b509f6" WorkspaceID="0085843f-41ec-46d0-9458-f2d4e9774371" Order="3072" Title="Contracts" Icon="description" Parameters="" />
                         </row>
                     </SiteMap>
+                    <Note NoteText="" GraphType="PX.Data.Maintenance.GI.GenericInquiryDesigner" EntityType="PX.Data.Maintenance.GI.GIDesign" />
                 </row>
             </GIDesign>
             <MUIWorkspace>

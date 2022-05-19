@@ -1,0 +1,123 @@
+﻿<Graph ClassName="CustomerMaint" Source="#CDATA" IsNew="True" FileType="ExistingGraph">
+    <CDATA name="Source"><![CDATA[using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using PX.Common;
+using PX.Data;
+using PX.SM;
+using PX.Objects.AR.CCPaymentProcessing;
+using PX.Objects.AR.Repositories;
+using PX.Objects.Common;
+using PX.Objects.Common.Discount;
+using PX.Objects.CA;
+using PX.Objects.CM;
+using PX.Objects.CR;
+using PX.Objects.CR.Extensions;
+using PX.Objects.CS;
+using PX.Objects.SO;
+using PX.Objects.AR.CCPaymentProcessing.Helpers;
+using PX.Data.BQL.Fluent;
+using PX.Data.BQL;
+using PX.Data.Descriptor;
+using CashAccountAttribute = PX.Objects.GL.CashAccountAttribute;
+using PX.Objects.GL.Helpers;
+using PX.Objects.TX;
+using PX.Objects.IN;
+using PX.Objects.CR.Extensions.Relational;
+using PX.Objects.CR.Extensions.CRCreateActions;
+using PX.Objects.GDPR;
+using PX.Objects.GraphExtensions.ExtendBAccount;
+using PX.Data.ReferentialIntegrity.Attributes;
+using CRLocation = PX.Objects.CR.Standalone.Location;
+using PX.Objects;
+using PX.Objects.AR;
+
+namespace PX.Objects.AR
+{
+  public class CustomerMaint_Extension : PXGraphExtension<CustomerMaint>
+  {
+
+    #region Data Views
+
+    // Data View for Current Customer's BAccount
+    public PXSelect<CR.BAccount, Where<CR.BAccount.bAccountID, Equal<Current<Customer.parentBAccountID>>>> ParentBAccount;
+
+    // Data View for all children
+    public PXSelect<CR.BAccount, Where<CR.BAccount.parentBAccountID, Equal<Current<Customer.bAccountID>>>> AllChildAccounts;
+    #endregion
+
+    #region Event Handlers
+
+    protected void Customer_RowSelected(PXCache cache, PXRowSelectedEventArgs e)
+    {
+      Customer row = (Customer)e.Row;
+
+      // Disable Major Tender field if parent account exists
+      if (
+        row != null &&
+        row.ParentBAccountID != null
+        )
+      {
+        PXUIFieldAttribute.SetEnabled<CR.BAccountExt.usrMajorTender>(cache, row, false);
+      }
+    }
+
+   
+    protected void Customer_RowUpdated(PXCache cache, PXRowUpdatedEventArgs e)
+    {
+
+      // Sets child Major Tender Fields to match parent
+      Customer row = (Customer)e.Row;
+      Customer oldRow = (Customer)e.OldRow;
+      CR.BAccountExt ext = row.GetExtension<CR.BAccountExt>();
+      CR.BAccountExt oldExt = oldRow.GetExtension<CR.BAccountExt>();
+      
+
+      if (
+        ext.UsrMajorTender != null &&
+        oldExt.UsrMajorTender != null &&
+        ext.UsrMajorTender != null &&
+        oldExt.UsrMajorTender != null &&
+        ext.UsrMajorTender != oldExt.UsrMajorTender
+        ) {
+        foreach (BAccount child in AllChildAccounts.Select())
+        {
+          CR.BAccountExt childExt = child.GetExtension<CR.BAccountExt>();
+
+          childExt.UsrMajorTender = ext.UsrMajorTender;
+
+          AllChildAccounts.Update(child);
+        }
+      }
+
+    }
+
+    protected void Customer_ParentBAccountID_FieldUpdated(PXCache cache, PXFieldUpdatedEventArgs e)
+    {
+
+      Customer row = (Customer)e.Row;
+
+      // Sets Major Tender Field to match Parent
+      if (
+        row != null &&
+        cache.GetValue<Customer.parentBAccountID>(row) != null)
+      {
+        CR.BAccountExt parentExt = null;
+
+        foreach (CR.BAccount account in ParentBAccount.Select()) {
+            parentExt = account.GetExtension<CR.BAccountExt>();
+            cache.SetValueExt<CR.BAccountExt.usrMajorTender>(row, parentExt.UsrMajorTender);
+        }
+
+      }
+
+    }
+
+
+
+    #endregion
+  }
+}]]></CDATA>
+</Graph>

@@ -26,7 +26,7 @@
         <data>
             <SiteMap>
                 <row Position="60" Title="Customer Contracts" Url="~/GenericInquiry/GenericInquiry.aspx?id=11e98a21-22bd-4b3d-8e6f-4768b8be4440" ScreenID="CT3010PL" NodeID="b2034dfa-d8f0-4328-ab3c-9b84c6b5380b" ParentID="12167736-ae7e-46ab-8a8c-dd4b86217519">
-                    <MUIScreen IsPortal="0" WorkspaceID="00000000-0000-0000-0000-000000000000" Order="642152" SubcategoryID="aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa" />
+                    <MUIScreen IsPortal="0" WorkspaceID="00000000-0000-0000-0000-000000000000" Order="642172" SubcategoryID="aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa" />
                 </row>
             </SiteMap>
         </data>
