@@ -1,3 +1,7 @@
 ﻿<DAC type="PX.Objects.CT.Contract">
-    <Field FieldName="WorkgroupID" TypeName="int" OverrideClassName="PX.Objects.CT.Contract" StorageName="ExistingColumn" />
+    <Field FieldName="WorkgroupID" TypeName="int" TextAttributes="#CDATA" OverrideGeneratedAttributes="True" OverrideClassName="PX.Objects.CT.Contract" StorageName="ExistingColumn">
+        <CDATA name="TextAttributes"><![CDATA[[PXInt]
+[PXSelector(typeof(Search<Contract.workgroupID>))]]]></CDATA>
+    </Field>
+    <Field FieldName="OwnerID" TypeName="int" OverrideClassName="PX.Objects.CT.Contract" StorageName="ExistingColumn" />
 </DAC>

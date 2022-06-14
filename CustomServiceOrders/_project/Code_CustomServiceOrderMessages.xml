@@ -1,0 +1,11 @@
+﻿<Graph ClassName="CustomServiceOrderMessages" Source="#CDATA" IsNew="True" FileType="NewFile">
+    <CDATA name="Source"><![CDATA[using System;
+
+namespace CustomServiceOrders
+{
+  public class CustomServiceOrderMessages
+  {
+    public const string RouteServiceOrdersRestricted = "Route service orders can not be created manually.";
+  }
+}]]></CDATA>
+</Graph>

@@ -5,9 +5,9 @@ namespace CustomMajorTenderRelConstraints
 {
   public class MajorTenderConstants
   {
-    public const String None = "";
-    public const String Major = "Major";
-    public const String Tender = "Tender";
+    public const string None = "";
+    public const string Major = "Major";
+    public const string Tender = "Tender";
   }
 }]]></CDATA>
 </Graph>

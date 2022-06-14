@@ -1,0 +1,17 @@
+﻿<DAC type="PX.Objects.FS.FSServiceOrder">
+    <Field FieldName="UsrServiceDescription" TypeName="string" MapDbTable="FSServiceOrder" TextAttributes="#CDATA" StorageName="AddColumn">
+        <CDATA name="TextAttributes"><![CDATA[[PXDBString(4000, IsUnicode = true)]
+[PXUIField(DisplayName="Service Description")]
+[PXStringList(
+new string[]{
+       CustomServiceOrders.CustomDescriptions.ShreddingContainerDelivery,
+       CustomServiceOrders.CustomDescriptions.ContainerRemovalService 
+},
+new string[]{
+       CustomServiceOrders.CustomDescriptions.ShreddingContainerDelivery,
+       CustomServiceOrders.CustomDescriptions.ContainerRemovalService 
+},
+MultiSelect = true
+)]]]></CDATA>
+    </Field>
+</DAC>
