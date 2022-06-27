@@ -1,6 +1,0 @@
-﻿<DAC type="PX.Objects.FS.FSServiceOrder">
-    <Field FieldName="DocDesc" TypeName="string" TextAttributes="#CDATA" OverrideGeneratedAttributes="True" OverrideClassName="PX.Objects.FS.FSServiceOrder" StorageName="ExistingColumn">
-        <CDATA name="TextAttributes"><![CDATA[[PXDBString(Common.Constants.TranDescLength, IsUnicode = true)]
-        [PXUIField(DisplayName = "Description", Visibility = PXUIVisibility.SelectorVisible)]]]></CDATA>
-    </Field>
-</DAC>

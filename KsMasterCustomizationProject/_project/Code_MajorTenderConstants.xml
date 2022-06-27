@@ -1,0 +1,13 @@
+﻿<Graph ClassName="MajorTenderConstants" Source="#CDATA" IsNew="True" FileType="NewFile">
+    <CDATA name="Source"><![CDATA[using System;
+
+namespace KsMasterCustomizationProject
+{
+  public class MajorTenderConstants
+  {
+    public const string None = "";
+    public const string Major = "Major";
+    public const string Tender = "Tender";
+  }
+}]]></CDATA>
+</Graph>

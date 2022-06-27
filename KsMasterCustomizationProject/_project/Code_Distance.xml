@@ -1,0 +1,13 @@
+﻿<Graph ClassName="Distance" Source="#CDATA" IsNew="True" FileType="NewFile">
+    <CDATA name="Source"><![CDATA[using System;
+
+namespace KsMasterCustomizationProject
+{
+  public static class Distance
+  {
+    public static double milesToKilometers(double miles) {
+      return Math.Round(miles * (double)1.60934, 2);
+    }
+  }
+}]]></CDATA>
+</Graph>

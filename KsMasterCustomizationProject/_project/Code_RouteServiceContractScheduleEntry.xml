@@ -1,0 +1,57 @@
+﻿<Graph ClassName="RouteServiceContractScheduleEntry" Source="#CDATA" IsNew="True" FileType="ExistingGraph">
+    <CDATA name="Source"><![CDATA[using PX.Data;
+using PX.Data.DependencyInjection;
+using PX.Data.BQL.Fluent;
+using PX.LicensePolicy;
+using PX.Objects.GL;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
+using PX.Objects;
+using PX.Objects.FS;
+
+namespace PX.Objects.FS
+{
+
+  public class RouteServiceContractScheduleEntry_Extension : PXGraphExtension<RouteServiceContractScheduleEntry>
+  {
+    #region Event Handlers
+
+    public PXSelect<FSRoute> AllFSRoutes;
+    public PXSelect<FSServiceContract, Where<FSServiceContract.serviceContractID, Equal<Current<FSRouteContractSchedule.entityID>>>> SelectedFSServiceContract;
+    
+    public const string RouteIDMatchExceptionMessage = "Branch on Route must match Branch of contract.";
+
+    protected void FSScheduleRoute_DfltRouteID_FieldVerifying(PXCache cache, PXFieldVerifyingEventArgs e, PXFieldVerifying InvokeBaseHandler)
+    {
+      if(InvokeBaseHandler != null)
+        InvokeBaseHandler(cache, e);
+
+      FSScheduleRoute row = (FSScheduleRoute)e.Row;
+
+      if (SelectedFSServiceContract != null)
+      {
+        FSServiceContract selectedFSServiceContract = SelectedFSServiceContract.SelectSingle();
+
+        foreach (FSRoute item in AllFSRoutes.Select())
+        {
+          if ((int) item.RouteID == (int) e.NewValue)
+          {
+
+            if (item.BeginBranchID != selectedFSServiceContract.BranchID)
+            {
+              throw new PXSetPropertyException(RouteIDMatchExceptionMessage, PXErrorLevel.RowError);
+            }
+
+            break;
+          }
+        }
+      }
+
+    }
+
+    #endregion
+  }
+}]]></CDATA>
+</Graph>

@@ -1,0 +1,84 @@
+﻿<Graph ClassName="BAccountExtensions" Source="#CDATA" IsNew="True" FileType="NewFile">
+    <CDATA name="Source"><![CDATA[using PX.Data.BQL.Fluent;
+using PX.Data.EP;
+using PX.Data.ReferentialIntegrity.Attributes;
+using PX.Data;
+using PX.Objects.AP;
+using PX.Objects.AR;
+using PX.Objects.CR.MassProcess;
+using PX.Objects.CR.Workflows;
+using PX.Objects.CR;
+using PX.Objects.CS;
+using PX.Objects.EP;
+using PX.Objects.GL;
+using PX.Objects.PO;
+using PX.Objects.TX;
+using PX.Objects;
+using PX.SM;
+using PX.TM;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System;
+using KsMasterCustomizationProject;
+
+namespace PX.Objects.CR
+{
+  public class BAccountExt : PXCacheExtension<PX.Objects.CR.BAccount>
+  {
+    #region UsrAgingSortCode
+    [PXDBString]
+    [PXUIField(DisplayName="Aging Sort Code", Required = true)]
+    [PXStringList(
+    new string[]
+    {
+    AgingSortCodes.None
+    },
+    new string[]
+    {
+    AgingSortCodes.None
+    }
+    )]
+    public virtual string UsrAgingSortCode { get; set; }
+    public abstract class usrAgingSortCode : PX.Data.BQL.BqlString.Field<usrAgingSortCode> { }
+    #endregion
+
+    #region UsrCODLabel
+    [PXString]
+    [PXUIField(DisplayName="CODLabel", Required = false,Enabled = false)]
+    [PXUnboundDefault("")]
+    public virtual string UsrCODLabel { get; set; }
+    public abstract class usrCODLabel : PX.Data.BQL.BqlString.Field<usrCODLabel> { }
+    #endregion
+
+    #region UsrMajorTender
+    [PXDBString]
+    [PXStringList(
+    new string[]
+    {
+    MajorTenderConstants.None,
+    MajorTenderConstants.Major,
+    MajorTenderConstants.Tender
+    },
+    new string[]
+    {
+    MajorTenderConstants.None,
+    MajorTenderConstants.Major,
+    MajorTenderConstants.Tender
+    })]
+    [PXUIField(DisplayName="MajorTender")]
+    public virtual string UsrMajorTender { get; set; }
+    public abstract class usrMajorTender : PX.Data.BQL.BqlString.Field<usrMajorTender> { }
+    #endregion
+     
+    #region UsrCorporateRegionID
+    [PXDBInt]
+    [PXUIField(DisplayName="Corporate Region ID")]
+    [PXDBDefault(typeof(CorporateRegion.corporateRegionID))]
+    [PXSelector(typeof(Search<CorporateRegion.corporateRegionID>))]
+    public virtual int? UsrCorporateRegionID { get; set; }
+    public abstract class usrCorporateRegionID : PX.Data.BQL.BqlInt.Field<usrCorporateRegionID> { }
+    #endregion
+      
+  }
+}]]></CDATA>
+</Graph>

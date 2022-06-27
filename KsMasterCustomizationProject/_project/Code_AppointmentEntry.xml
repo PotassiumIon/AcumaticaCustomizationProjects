@@ -1,0 +1,85 @@
+﻿<Graph ClassName="AppointmentEntry" Source="#CDATA" IsNew="True" FileType="ExistingGraph">
+    <CDATA name="Source"><![CDATA[using PX.Data.ReferentialIntegrity.Attributes;
+using PX.Objects.GL;
+using Autofac;
+using PX.Api;
+using PX.Common;
+using PX.Data;
+using PX.Data.DependencyInjection;
+using PX.Data.Reports;
+using PX.Data.WorkflowAPI;
+using PX.FS;
+using PX.LicensePolicy;
+using PX.Objects.AP;
+using PX.Objects.AR;
+using PX.Objects.CM.Extensions;
+using PX.Objects.Common;
+using PX.Objects.CR;
+using PX.Objects.CS;
+using PX.Objects.CT;
+using PX.Objects.EP;
+using PX.Objects.Extensions.MultiCurrency;
+using PX.Objects.Extensions.SalesTax;
+using PX.Objects.FS.ParallelProcessing;
+using PX.Objects.IN;
+using PX.Objects.PM;
+using PX.Objects.PO;
+using PX.Objects.SO;
+using PX.Objects.TX;
+using PX.Reports;
+using PX.Reports.Controls;
+using PX.Reports.Data;
+using PX.SM;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+using System.Web.Compilation;
+using TMEPEmployee = PX.Objects.CR.Standalone.EPEmployee;
+using PX.Data.BQL.Fluent;
+using PX.Data.BQL;
+using PX.Objects;
+using PX.Objects.FS;
+
+namespace PX.Objects.FS
+{
+  public class AppointmentEntry_Extension : PXGraphExtension<AppointmentEntry>
+  {
+  
+  
+  
+    #region Event Handlers
+  
+    public const string RouteAppointmentsRestricted = "Route appointments can not be created manually.";
+  
+    [PXRemoveBaseAttribute(typeof(PXDefaultAttribute))]
+    protected virtual void FSAppointment_SrvOrdType_CacheAttached(PXCache cache)
+    {
+    
+    }
+
+    protected void FSAppointment_SrvOrdType_FieldVerifying(PXCache cache, PXFieldVerifyingEventArgs e)
+    {
+      
+      var row = (FSAppointment)e.Row;
+      string newValue = (string)e.NewValue;
+
+      if (
+        newValue != null
+        && Base.ServiceOrderTypeSelected != null
+        && Base.ServiceOrderTypeSelected.Current != null
+        && Base.ServiceOrderTypeSelected.Current.Descr != null
+        && Base.ServiceOrderTypeSelected.Current.Descr.Contains("Routed Service")
+        )
+      {
+        throw new PXSetPropertyException(RouteAppointmentsRestricted, PXErrorLevel.RowError);
+      }
+
+    }
+    
+
+    #endregion
+  }
+}]]></CDATA>
+</Graph>

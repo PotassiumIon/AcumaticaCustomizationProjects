@@ -1,3 +1,0 @@
-﻿<Table TableName="BAccount">
-    <Column TableName="BAccount" ColumnName="UsrMajorTender" ColumnType="string" AllowNull="True" MaxLength="25" DecimalPrecision="2" IsNewColumn="True" IsUnicode="True" />
-</Table>

@@ -1,0 +1,7 @@
+﻿<DAC type="PX.Objects.FS.FSRouteDocument">
+    <Field FieldName="UsrCustomTotalDisatnce" TypeName="string" TextAttributes="#CDATA" StorageName="AddColumn">
+        <CDATA name="TextAttributes"><![CDATA[[PXString]
+[PXUIField(DisplayName="Total Distance [*]", IsReadOnly = true)]
+[PXUnboundDefault("")]]]></CDATA>
+    </Field>
+</DAC>

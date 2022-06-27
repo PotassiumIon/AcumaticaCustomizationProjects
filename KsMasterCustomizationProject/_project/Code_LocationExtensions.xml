@@ -1,0 +1,35 @@
+﻿<Graph ClassName="LocationExtensions" Source="#CDATA" IsNew="True" FileType="NewFile">
+    <CDATA name="Source"><![CDATA[using PX.Data.ReferentialIntegrity.Attributes;
+using PX.Data;
+using PX.Objects.AP;
+using PX.Objects.AR;
+using PX.Objects.CA;
+using PX.Objects.CR.MassProcess;
+using PX.Objects.CR.Workflows;
+using PX.Objects.CR;
+using PX.Objects.CS;
+using PX.Objects.GL;
+using PX.Objects.IN;
+using PX.Objects.PO;
+using PX.Objects.SO;
+using PX.Objects.TX;
+using PX.Objects;
+using System.Collections.Generic;
+using System;
+using KsMasterCustomizationProject;
+
+namespace PX.Objects.CR
+{
+  public class LocationExt : PXCacheExtension<PX.Objects.CR.Location>
+  {
+    #region UsrCorporateRegionID
+    [PXDBInt]
+    [PXUIField(DisplayName="Corporate Region ID")]
+    [PXDBDefault(typeof(KsMasterCustomizationProject.CorporateRegion.corporateRegionID))]
+    [PXSelector(typeof(Search<KsMasterCustomizationProject.CorporateRegion.corporateRegionID>))]
+    public virtual int? UsrCorporateRegionID { get; set; }
+    public abstract class usrCorporateRegionID : PX.Data.BQL.BqlInt.Field<usrCorporateRegionID> { }
+    #endregion
+  }
+}]]></CDATA>
+</Graph>

@@ -1,0 +1,6 @@
+﻿<Table TableName="BAccount">
+    <Column TableName="BAccount" ColumnName="UsrCorporateRegionID" ColumnType="int" AllowNull="True" MaxLength="25" DecimalPrecision="2" IsNewColumn="True" IsUnicode="True" />
+    <Column TableName="BAccount" ColumnName="UsrAgingSortCode" ColumnType="string" AllowNull="True" MaxLength="25" DecimalPrecision="2" IsNewColumn="True" IsUnicode="True" />
+    <Column TableName="BAccount" ColumnName="UsrCODLabel" ColumnType="guid" AllowNull="True" MaxLength="25" DecimalPrecision="2" IsNewColumn="True" IsUnicode="True" />
+    <Column TableName="BAccount" ColumnName="UsrMajorTender" ColumnType="string" AllowNull="True" MaxLength="25" DecimalPrecision="2" IsNewColumn="True" IsUnicode="True" />
+</Table>

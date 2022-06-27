@@ -1,0 +1,38 @@
+﻿<Graph ClassName="RouteDocumentMaint" Source="#CDATA" IsNew="True" FileType="ExistingGraph">
+    <CDATA name="Source"><![CDATA[using PX.Common;
+using PX.Data;
+using PX.Data.DependencyInjection;
+using PX.LicensePolicy;
+using PX.Objects.Common;
+using PX.Objects.CR;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using PX.Objects;
+using PX.Objects.FS;
+using KsMasterCustomizationProject;
+
+namespace PX.Objects.FS
+{
+  public class RouteDocumentMaint_Extension : PXGraphExtension<RouteDocumentMaint>
+  {
+    #region Event Handlers
+
+    protected void FSRouteDocument_RowSelected(PXCache cache, PXRowSelectedEventArgs e)
+    {
+      // Instance of Data Access Class
+      var row = (FSRouteDocument)e.Row;
+
+      // Calculates Total Distance in KM
+      if (row != null && row.TotalDistance != null) {
+        double distanceKM = Distance.milesToKilometers((double) row.TotalDistance);
+        cache.SetValueExt(row, "usrCustomTotalDistance", $"{row.TotalDistanceFriendly} / {distanceKM} km");
+      }
+      
+    }
+
+    #endregion
+  }
+}]]></CDATA>
+</Graph>

@@ -1,0 +1,10 @@
+﻿<DAC type="PX.Objects.CT.Contract">
+    <Field FieldName="UsrWorkgroupID" TypeName="int" MapDbTable="Contract" TextAttributes="#CDATA" StorageName="AddColumn">
+        <CDATA name="TextAttributes"><![CDATA[[PXDBInt]
+[PXUIField(DisplayName="Workgroup ID")]
+[PXSelector(
+        typeof(Search<EPCompanyTreeMaster.workGroupID>), 
+        SubstituteKey = typeof(EPCompanyTreeMaster.description)
+)]]]></CDATA>
+    </Field>
+</DAC>

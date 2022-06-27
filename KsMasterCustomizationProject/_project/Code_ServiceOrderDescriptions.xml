@@ -1,0 +1,12 @@
+﻿<Graph ClassName="ServiceOrderDescriptions" Source="#CDATA" IsNew="True" FileType="NewFile">
+    <CDATA name="Source"><![CDATA[using System;
+
+namespace KsMasterCustomizationProject
+{
+  public class ServiceOrderDescriptions
+  {
+    public const string ShreddingContainerDelivery = "Shredding - Container Delivery";
+    public const string ContainerRemovalService = "Shredding - Container Removal Service";
+  }
+}]]></CDATA>
+</Graph>
