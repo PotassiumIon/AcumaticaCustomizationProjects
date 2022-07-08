@@ -1,0 +1,33 @@
+﻿<Graph ClassName="AgingSortCode" Source="#CDATA" IsNew="True" FileType="NewDac">
+    <CDATA name="Source"><![CDATA[using System;
+using PX.Data;
+
+namespace KsMasterCustomizationProject
+{
+  [Serializable]
+  [PXCacheName("AgingSortCode")]
+  public class AgingSortCode : IBqlTable
+  {
+    #region AgingSortCodeID
+    [PXDBIdentity(IsKey = true)]
+    [PXUIField(DisplayName = "Aging Sort Code ID", Required = true, Visibility = PXUIVisibility.SelectorVisible)]
+    public virtual int? AgingSortCodeID { get; set; }
+    public abstract class agingSortCodeID : PX.Data.BQL.BqlInt.Field<agingSortCodeID> { }
+    #endregion
+
+    #region AgingSortCodeCD
+    [PXDBString(30, IsKey = true, IsUnicode = true, InputMask = "")]
+    [PXUIField(DisplayName = "Aging Sort Code CD", Visibility = PXUIVisibility.SelectorVisible)]
+    public virtual string AgingSortCodeCD { get; set; }
+    public abstract class agingSortCodeCD : PX.Data.BQL.BqlString.Field<agingSortCodeCD> { }
+    #endregion
+
+    #region Descr
+    [PXDBString(60, IsUnicode = true, InputMask = "")]
+    [PXUIField(DisplayName = "Descr", Visibility = PXUIVisibility.SelectorVisible)]
+    public virtual string Descr { get; set; }
+    public abstract class descr : PX.Data.BQL.BqlString.Field<descr> { }
+    #endregion
+  }
+}]]></CDATA>
+</Graph>

@@ -4,29 +4,31 @@ using PX.Data;
 
 namespace KsMasterCustomizationProject
 {
-	[Serializable]
-	[PXCacheName("CorporateRegion")]
-	public class CorporateRegion : IBqlTable
-	{
-		#region CorporateRegionID
-		[PXDBIdentity(IsKey = true)]
-		public virtual int? CorporateRegionID { get; set; }
-		public abstract class corporateRegionID : PX.Data.BQL.BqlInt.Field<corporateRegionID> { }
-		#endregion
+  [Serializable]
+  [PXCacheName("CorporateRegion")]
+  public class CorporateRegion : IBqlTable
+  {
+    #region CorporateRegionID
+    [PXDBIdentity(IsKey = true)]
+    [PXUIField(DisplayName = "Corporate Region ID", Required = true, Visibility = PXUIVisibility.SelectorVisible)]
+    public virtual int? CorporateRegionID { get; set; }
+    public abstract class corporateRegionID : PX.Data.BQL.BqlInt.Field<corporateRegionID> { }
+    #endregion
 
-		#region CorporateRegionCD
-		[PXDBString(30, IsKey = true, IsUnicode = true, InputMask = "")]
-		[PXUIField(DisplayName = "Corporate Region CD")]
-		public virtual string CorporateRegionCD { get; set; }
-		public abstract class corporateRegionCD : PX.Data.BQL.BqlString.Field<corporateRegionCD> { }
-		#endregion
+    #region CorporateRegionCD
+    [PXDBString(30, IsKey = true, IsUnicode = true, InputMask = "")]
+    [PXUIField(DisplayName = "Corporate Region CD", Required = true, Visibility = PXUIVisibility.SelectorVisible)]
+    public virtual string CorporateRegionCD { get; set; }
+    public abstract class corporateRegionCD : PX.Data.BQL.BqlString.Field<corporateRegionCD> { }
+    #endregion
 
-		#region Descr
-		[PXDBString(60, IsUnicode = true, InputMask = "")]
-		[PXUIField(DisplayName = "Descr")]
-		public virtual string Descr { get; set; }
-		public abstract class descr : PX.Data.BQL.BqlString.Field<descr> { }
-		#endregion
-	}
+    #region Descr
+    [PXDBString(60, IsUnicode = true, InputMask = "")]
+    [PXDefault]
+    [PXUIField(DisplayName = "Description", Required = false, Visibility = PXUIVisibility.SelectorVisible)]
+    public virtual string Descr { get; set; }
+    public abstract class descr : PX.Data.BQL.BqlString.Field<descr> { }
+    #endregion
+  }
 }]]></CDATA>
 </Graph>

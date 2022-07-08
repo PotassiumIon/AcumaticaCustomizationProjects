@@ -26,17 +26,11 @@ namespace PX.Objects.CR
   public class BAccountExt : PXCacheExtension<PX.Objects.CR.BAccount>
   {
     #region UsrAgingSortCode
-    [PXDBString]
-    [PXUIField(DisplayName="Aging Sort Code", Required = true)]
-    [PXStringList(
-    new string[]
-    {
-    AgingSortCodes.None
-    },
-    new string[]
-    {
-    AgingSortCodes.None
-    }
+    [PXDBInt]
+    [PXUIField(DisplayName="Aging Sort Code")]
+    [PXSelector(
+      typeof(Search<AgingSortCode.agingSortCodeID>),
+      SubstituteKey = typeof(AgingSortCode.agingSortCodeCD)
     )]
     public virtual string UsrAgingSortCode { get; set; }
     public abstract class usrAgingSortCode : PX.Data.BQL.BqlString.Field<usrAgingSortCode> { }
@@ -44,8 +38,8 @@ namespace PX.Objects.CR
 
     #region UsrCODLabel
     [PXString]
-    [PXUIField(DisplayName="CODLabel", Required = false,Enabled = false)]
-    [PXUnboundDefault("")]
+    [PXUIField(DisplayName="CODLabel", Enabled = false)]
+    [PXUnboundDefault("Customer is COD")]
     public virtual string UsrCODLabel { get; set; }
     public abstract class usrCODLabel : PX.Data.BQL.BqlString.Field<usrCODLabel> { }
     #endregion
@@ -69,16 +63,17 @@ namespace PX.Objects.CR
     public virtual string UsrMajorTender { get; set; }
     public abstract class usrMajorTender : PX.Data.BQL.BqlString.Field<usrMajorTender> { }
     #endregion
-     
+      
     #region UsrCorporateRegionID
     [PXDBInt]
     [PXUIField(DisplayName="Corporate Region ID")]
-    [PXDBDefault(typeof(CorporateRegion.corporateRegionID))]
-    [PXSelector(typeof(Search<CorporateRegion.corporateRegionID>))]
+    [PXSelector(
+      typeof(Search<CorporateRegion.corporateRegionID>),
+      SubstituteKey = typeof(CorporateRegion.corporateRegionCD)
+    )]
     public virtual int? UsrCorporateRegionID { get; set; }
     public abstract class usrCorporateRegionID : PX.Data.BQL.BqlInt.Field<usrCorporateRegionID> { }
     #endregion
-      
   }
 }]]></CDATA>
 </Graph>

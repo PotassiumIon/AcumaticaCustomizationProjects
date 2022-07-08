@@ -1,0 +1,13 @@
+﻿<Sql TableName="AgingSortCode" TableSchemaXml="#CDATA">
+    <CDATA name="TableSchemaXml"><![CDATA[<table name="AgingSortCode">
+  <col name="AgingSortCodeID" type="Int" identity="true" />
+  <col name="AgingSortCodeCD" type="NVarChar(30)" nullable="true" />
+  <col name="Descr" type="NVarChar(60)" nullable="true" />
+  <index name="PK__AgingSor__C505F5A725DEF07D" clustered="true" primary="true" unique="true">
+    <col name="AgingSortCodeID" />
+  </index>
+  <index name="UQ__AgingSor__C505CAEE96F913D4" unique="true">
+    <col name="AgingSortCodeCD" />
+  </index>
+</table>]]></CDATA>
+</Sql>

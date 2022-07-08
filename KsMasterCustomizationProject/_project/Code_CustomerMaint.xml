@@ -27,12 +27,12 @@ using PX.Objects.TX;
 using PX.Objects.IN;
 using PX.Objects.CR.Extensions.Relational;
 using PX.Objects.CR.Extensions.CRCreateActions;
-using PX.Objects.GDPR;
 using PX.Objects.GraphExtensions.ExtendBAccount;
 using PX.Data.ReferentialIntegrity.Attributes;
 using CRLocation = PX.Objects.CR.Standalone.Location;
 using PX.Objects;
 using PX.Objects.AR;
+using PX.Objects.EP;
 using KsMasterCustomizationProject;
 
 namespace PX.Objects.AR
@@ -42,29 +42,13 @@ namespace PX.Objects.AR
     #region Data Views
 
     // Data View for Current Customer's BAccount
-    public PXSelect<CR.BAccount, Where<CR.BAccount.bAccountID, Equal<Current<Customer.parentBAccountID>>>> ParentBAccount;
+    public PXSelect<BAccount, Where<BAccount.bAccountID, Equal<Current<Customer.parentBAccountID>>>> ParentBAccount;
 
     // Data View for all children
-    public PXSelect<CR.BAccount, Where<CR.BAccount.parentBAccountID, Equal<Current<Customer.bAccountID>>>> AllChildAccounts;
+    public PXSelect<BAccount, Where<BAccount.parentBAccountID, Equal<Current<Customer.bAccountID>>>> AllChildAccounts;
     #endregion
 
     #region Event Handlers
-
-    public const string InvalidAgingSortCodeMessage = "Invalid Aging Sort Code";
-    public const string CustomerIsCODException = "This Customer is COD";
-
-    protected void Customer_UsrAgingSortCode_FieldVerifying(PXCache cache, PXFieldVerifyingEventArgs e)
-    {
-
-      Customer row = (Customer)e.Row;
-      string newValue = (string)e.NewValue;
-
-      if (newValue != null && newValue.Equals(AgingSortCodes.None))
-      {
-        throw new PXSetPropertyException(InvalidAgingSortCodeMessage, PXErrorLevel.RowError);
-      }
-
-    }
 
     protected void Customer_RowSelected(PXCache cache, PXRowSelectedEventArgs e)
     {
@@ -76,10 +60,10 @@ namespace PX.Objects.AR
         row.ParentBAccountID != null
         )
       {
-        PXUIFieldAttribute.SetEnabled<CR.BAccountExt.usrMajorTender>(cache, row, false);
+        PXUIFieldAttribute.SetEnabled<BAccountExt.usrMajorTender>(cache, row, false);
       } else
       {
-        PXUIFieldAttribute.SetEnabled<CR.BAccountExt.usrMajorTender>(cache, row, true);
+        PXUIFieldAttribute.SetEnabled<BAccountExt.usrMajorTender>(cache, row, true);
       }
 
       // Set and show COD Label if terms == "COD"
@@ -88,12 +72,12 @@ namespace PX.Objects.AR
         && !row.TermsID.Equals("COD")
         )
       {
-        cache.SetValueExt(row, "usrCODLabel", "");
-        PXUIFieldAttribute.SetVisible<CR.BAccountExt.usrCODLabel>(cache, row, false);
+        //cache.SetValueExt(row, "usrCODLabel", "");
+        PXUIFieldAttribute.SetVisible<BAccountExt.usrCODLabel>(cache, row, false);
       }
       else {
-        cache.SetValueExt(row, "usrCODLabel", CustomerIsCODException);
-        PXUIFieldAttribute.SetVisible<CR.BAccountExt.usrCODLabel>(cache, row, true);
+        //cache.SetValueExt(row, "usrCODLabel", CustomerIsCODException);
+        PXUIFieldAttribute.SetVisible<BAccountExt.usrCODLabel>(cache, row, true);
       }
     }
 
@@ -101,31 +85,56 @@ namespace PX.Objects.AR
     protected void Customer_RowUpdated(PXCache cache, PXRowUpdatedEventArgs e)
     {
 
-      // Sets child Major Tender Fields to match parent
+      
       Customer row = (Customer)e.Row;
       Customer oldRow = (Customer)e.OldRow;
-      CR.BAccountExt ext = row.GetExtension<CR.BAccountExt>();
-      CR.BAccountExt oldExt = oldRow.GetExtension<CR.BAccountExt>();
 
+      // Sets child Major Tender Fields to match parent
+      BAccountExt ext = row.GetExtension<BAccountExt>();
+      BAccountExt oldExt = oldRow.GetExtension<BAccountExt>();
 
       if (
-        ext.UsrMajorTender != null &&
-        oldExt.UsrMajorTender != null &&
-        ext.UsrMajorTender != null &&
-        oldExt.UsrMajorTender != null &&
-        ext.UsrMajorTender != oldExt.UsrMajorTender
+        ext.UsrMajorTender != null
+        && oldExt.UsrMajorTender != null
+        && ext.UsrMajorTender != null
+        && oldExt.UsrMajorTender != null
+        && ext.UsrMajorTender != oldExt.UsrMajorTender
         )
       {
         foreach (BAccount child in AllChildAccounts.Select())
         {
-          CR.BAccountExt childExt = child.GetExtension<CR.BAccountExt>();
-
+          BAccountExt childExt = child.GetExtension<BAccountExt>();
           childExt.UsrMajorTender = ext.UsrMajorTender;
-
           AllChildAccounts.Update(child);
         }
       }
 
+
+      // Adds activity note if customer status changed
+      if (
+         row.Status != null
+         && oldRow.Status != null
+         && oldRow.Status != row.Status
+         && row.NoteID != null
+        ) {
+          
+        PXTrace.WriteInformation("This ran"); 
+
+        CRPMTimeActivity activity = new CRPMTimeActivity();
+
+        string guid = Base.Accessinfo.UserID.ToString();
+        int intuid = int.Parse(guid);
+
+        activity.Subject = $"Customer Status Changed to {row.Status}";
+        activity.Type = ActivityTypes.Note;
+        activity.OwnerID = intuid;
+        activity.RefNoteID = row.NoteID;
+        activity.StartDate = DateTime.Now;
+
+        Base.Activities.Insert(activity);
+
+      }
+        
     }
 
     protected void Customer_ParentBAccountID_FieldUpdated(PXCache cache, PXFieldUpdatedEventArgs e)
@@ -138,19 +147,12 @@ namespace PX.Objects.AR
         row != null &&
         cache.GetValue<Customer.parentBAccountID>(row) != null)
       {
-        CR.BAccountExt parentExt = null;
-
-        foreach (CR.BAccount account in ParentBAccount.Select())
-        {
-          parentExt = account.GetExtension<CR.BAccountExt>();
-          cache.SetValueExt<CR.BAccountExt.usrMajorTender>(row, parentExt.UsrMajorTender);
-        }
-
+        BAccount parentBAccount = ParentBAccount.SelectSingle();
+        BAccountExt parentExt = parentBAccount.GetExtension<BAccountExt>();
+        cache.SetValueExt<BAccountExt.usrMajorTender>(row, parentExt.UsrMajorTender);
       }
 
     }
-
-
 
     #endregion
   }

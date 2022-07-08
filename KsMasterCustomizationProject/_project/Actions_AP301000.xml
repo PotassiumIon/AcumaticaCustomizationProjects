@@ -1,0 +1,108 @@
+﻿<Actions ScreenID="AP301000">
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="initializeState" ActionType="G" After="Last" BatchMode="False" WindowMode="S" HideCondition="True" ExposedToMobile="False">
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="releaseFromHold" ActionType="G" After="initializeState" BatchMode="False" MenuFolderType="Processing" WindowMode="S" DisablePersist="True" ExposedToMobile="False">
+        <StateActionFields>
+            <StateActionField IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" FieldName="Hold" ActionName="releaseFromHold" IsFromScheme="True" Value="False" StateActionFieldLineNbr="0" />
+        </StateActionFields>
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="putOnHold" ActionType="G" After="releaseFromHold" BatchMode="False" MenuFolderType="Processing" WindowMode="S" DisablePersist="True" ExposedToMobile="False">
+        <StateActionFields>
+            <StateActionField IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" FieldName="Hold" ActionName="putOnHold" IsFromScheme="True" Value="True" StateActionFieldLineNbr="0" />
+            <StateActionField IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" FieldName="Approved" ActionName="putOnHold" IsFromScheme="True" Value="False" StateActionFieldLineNbr="1" />
+            <StateActionField IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" FieldName="Rejected" ActionName="putOnHold" IsFromScheme="True" Value="False" StateActionFieldLineNbr="2" />
+        </StateActionFields>
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="prebook" ActionType="G" After="putOnHold" DisableCondition="fa9d3c20-353c-0a9d-793c-8d16093e85f6" BatchMode="False" MenuFolderType="Processing" WindowMode="S" HideCondition="f19f7ac0-7e9b-27ff-ca03-6cbee1cc4b50" ExposedToMobile="False">
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="release" ActionType="G" After="prebook" BatchMode="False" MenuFolderType="Processing" WindowMode="S" ExposedToMobile="False">
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="payInvoice" ActionType="G" After="release" DisableCondition="77256796-deb2-4cbb-d18d-7ec0c2c50c4e" BatchMode="False" MenuFolderType="Processing" WindowMode="S" HideCondition="2d4b08b0-5cc0-dbd7-2d1b-75a7e626a8d0" ExposedToMobile="False">
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="vendorRefund" ActionType="G" After="payInvoice" DisableCondition="e10926f7-5c63-da41-a491-ab75ac97146b" BatchMode="False" MenuFolderType="Processing" WindowMode="S" HideCondition="2c2f0095-3d09-37ff-2ee4-3227a0a34457" ExposedToMobile="False">
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="reverseInvoice" ActionType="G" After="vendorRefund" AfterInMenu="reclassify" DisableCondition="89ba76cc-49a6-8c49-8278-857ba925c532" BatchMode="False" MenuFolderType="Corrections" WindowMode="S" HideCondition="89ba76cc-49a6-8c49-8278-857ba925c532" ExposedToMobile="False">
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="voidInvoice" ActionType="G" After="reverseInvoice" AfterInMenu="reverseInvoice" BatchMode="False" MenuFolderType="Corrections" WindowMode="S" HideCondition="0b766cec-8330-e9af-21a3-952553864ca0" ExposedToMobile="False">
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="reclassifyBatch" ActionType="G" After="voidInvoice" AfterInMenu="voidInvoice" DisableCondition="abf9ce81-532d-fd50-aabd-3d8308c0e2d0" BatchMode="False" MenuFolderType="Corrections" WindowMode="S" HideCondition="f19f7ac0-7e9b-27ff-ca03-6cbee1cc4b50" ExposedToMobile="False">
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="voidDocument" ActionType="G" After="reclassifyBatch" DisableCondition="4f45afc4-3cde-8762-b33d-8ccbf63785a1" BatchMode="False" MenuFolderType="Corrections" WindowMode="S" HideCondition="3dc44191-cf5d-bf9a-3c61-f4542bd96688" ExposedToMobile="False">
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="createSchedule" ActionType="G" After="voidDocument" BatchMode="False" MenuFolderType="CustomOther" WindowMode="S" HideCondition="2d4b08b0-5cc0-dbd7-2d1b-75a7e626a8d0" ExposedToMobile="False">
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="recalculateDiscountsAction" ActionType="G" After="createSchedule" DisableCondition="6fe500a0-0a59-bff3-0b1c-88266507f5d8" BatchMode="False" MenuFolderType="CustomOther" WindowMode="S" HideCondition="2d4b08b0-5cc0-dbd7-2d1b-75a7e626a8d0" ExposedToMobile="False">
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="vendorDocuments" ActionType="G" After="recalculateDiscountsAction" BatchMode="False" MenuFolderType="Inquiry" WindowMode="S" ExposedToMobile="False">
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="printAPEdit" ActionType="G" After="vendorDocuments" BatchMode="False" MenuFolderType="Report" WindowMode="S" ExposedToMobile="False">
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="printAPRegister" ActionType="G" After="printAPEdit" BatchMode="False" MenuFolderType="Report" WindowMode="S" HideCondition="71b62aa2-02f2-1476-eb8a-6c71a87ae682" ExposedToMobile="False">
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="approve" ActionType="G" After="releaseFromHold" AfterInMenu="releaseFromHold" BatchMode="False" MenuFolderType="Approval" WindowMode="S" HideCondition="c7766c04-d5df-a19b-ae27-4a1d2e1c23f8" ExposedToMobile="False">
+        <StateActionFields>
+            <StateActionField IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" FieldName="Approved" ActionName="approve" IsFromScheme="True" Value="True" StateActionFieldLineNbr="0" />
+        </StateActionFields>
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="reject" ActionType="G" After="approve" AfterInMenu="approve" BatchMode="False" MenuFolderType="Approval" WindowMode="S" HideCondition="c7766c04-d5df-a19b-ae27-4a1d2e1c23f8" ExposedToMobile="False">
+        <StateActionFields>
+            <StateActionField IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" FieldName="Rejected" ActionName="reject" IsFromScheme="True" Value="True" StateActionFieldLineNbr="0" />
+        </StateActionFields>
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="releaseRetainage" ActionType="G" After="payInvoice" AfterInMenu="payInvoice" DisableCondition="c26c6794-76b8-0c10-a062-38a2c6be62fe" BatchMode="False" MenuFolderType="Processing" WindowMode="S" HideCondition="67f4acf7-09c1-0b99-f218-abe027a7566b" ExposedToMobile="False">
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="viewSourceDocument" ActionType="G" After="releaseRetainage" BatchMode="False" MenuFolderType="Inquiry" WindowMode="S" ExposedToMobile="False">
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="reclassify" ActionType="G" After="viewSourceDocument" DisableCondition="ac6b30a8-96c0-691b-1615-c439cff40089" BatchMode="False" MenuFolderType="Corrections" WindowMode="S" ExposedToMobile="False">
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" ActionName="searchDuplicateVendorRef" ActionType="S" DestinationScreenID="AP3010PL" DisplayName="Search Duplicates" MenuFolderType="Inquiry" WindowMode="N" MapEnableRights="1" ExposedToMobile="True">
+        <Param IsActive="True" ActionName="searchDuplicateVendorRef" Name="APInvoice_invoiceNbr" FromSchema="True" />
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Category IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" DisplayName="Actions" CategoryName="Action" LineNbr="0" />
+    <Category IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" DisplayName="Processing" CategoryName="Processing" After="Action" LineNbr="1" />
+    <Category IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" DisplayName="Corrections" CategoryName="Corrections" After="Processing" LineNbr="2" />
+    <Category IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" DisplayName="Approval" CategoryName="Approval" After="Corrections" LineNbr="3" />
+    <Category IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" DisplayName="Other" CategoryName="CustomOther" After="Approval" LineNbr="4" />
+    <Category IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" DisplayName="Inquiries" CategoryName="Inquiry" After="CustomOther" LineNbr="5" />
+    <Category IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" DisplayName="Reports" CategoryName="Report" After="Inquiry" LineNbr="6" />
+</Actions>

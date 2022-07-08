@@ -42,44 +42,19 @@ namespace PX.Objects.FS
 
     #region Event Handlers
 
-    #region Exclude Route Behavior Service Order Types
-
-    [PXRemoveBaseAttribute(typeof(PXDefaultAttribute))]
-    protected virtual void FSServiceOrder_SrvOrdType_CacheAttached(PXCache cache)
-    {
-
-    }
-
-    protected void FSServiceOrder_SrvOrdType_FieldVerifying(PXCache cache, PXFieldVerifyingEventArgs e)
-    {
-      FSServiceOrder row = (FSServiceOrder) e.Row;
-      string newValue = (string) e.NewValue;
-
-      if (
-        newValue != null
-        && Base.ServiceOrderTypeSelected != null 
-        && Base.ServiceOrderTypeSelected.Current != null
-        && Base.ServiceOrderTypeSelected.Current.Descr != null
-        && Base.ServiceOrderTypeSelected.Current.Descr.Contains("Routed Service")
-        )
-      {
-        throw new PXSetPropertyException(RouteServiceOrdersRestricted, PXErrorLevel.RowError);
-      }
- 
-    }
-
-    #endregion
+    #region AutoAddDetailItems
 
     public PXAction<PX.Objects.FS.FSServiceOrder> AutoAddDetailItems;
-
     public SelectFrom<InventoryItem>.View inventoryItems;
-
+  
     [PXButton(CommitChanges = true)]
     [PXUIField(DisplayName = "Auto Add", Visible = true)]
     protected void autoAddDetailItems()
     {
-
-      // Finds the ids for related inventory items
+      
+     PXTrace.WriteInformation("AutoAddDetailItems Ran");
+      
+     // Finds the ids for related inventory items
       int shrdelivid = 0;
       int shrconsoleid = 0;
       int shrtoterid = 0;
@@ -151,6 +126,37 @@ namespace PX.Objects.FS
         AutoAddDetailItems.SetEnabled(false);
       }
     }
+
+    #endregion
+
+    #region Exclude Route Behavior Service Order Types
+
+    [PXRemoveBaseAttribute(typeof(PXDefaultAttribute))]
+    protected virtual void FSServiceOrder_SrvOrdType_CacheAttached(PXCache cache)
+    {
+
+    }
+
+    protected void FSServiceOrder_SrvOrdType_FieldVerifying(PXCache cache, PXFieldVerifyingEventArgs e)
+    {
+      FSServiceOrder row = (FSServiceOrder) e.Row;
+      string newValue = (string) e.NewValue;
+
+      if (
+        newValue != null
+        && Base.ServiceOrderTypeSelected != null 
+        && Base.ServiceOrderTypeSelected.Current != null
+        && Base.ServiceOrderTypeSelected.Current.Descr != null
+        && Base.ServiceOrderTypeSelected.Current.Descr.Contains("Routed Service")
+        )
+      {
+        throw new PXSetPropertyException(RouteServiceOrdersRestricted, PXErrorLevel.RowError);
+      }
+ 
+    }
+
+    #endregion
+
 
     #endregion
   }

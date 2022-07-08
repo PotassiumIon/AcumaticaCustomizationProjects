@@ -27,7 +27,7 @@ namespace PX.Objects.FS
       // Calculates Total Distance in KM
       if (row != null && row.TotalDistance != null) {
         double distanceKM = Distance.milesToKilometers((double) row.TotalDistance);
-        cache.SetValueExt(row, "usrCustomTotalDistance", $"{row.TotalDistanceFriendly} / {distanceKM} km");
+        cache.SetValueExt(row, "usrTotalDistance", $"{row.TotalDistanceFriendly} / {distanceKM} km");
       }
       
     }

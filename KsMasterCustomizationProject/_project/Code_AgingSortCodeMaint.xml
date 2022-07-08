@@ -1,0 +1,35 @@
+﻿<Graph ClassName="AgingSortCodeMaint" Source="#CDATA" IsNew="True" FileType="NewGraph">
+    <CDATA name="Source"><![CDATA[using System;
+using PX.Data;
+using PX.Data.BQL.Fluent;
+
+namespace KsMasterCustomizationProject
+{
+  public class AgingSortCodeMaint : PXGraph<AgingSortCodeMaint>
+  {
+    
+    public SelectFrom<AgingSortCode>.View AgingSortCode;
+
+    public PXSave<AgingSortCode> Save;
+    public PXCancel<AgingSortCode> Cancel;
+
+
+    public PXFilter<MasterTable> MasterView;
+    public PXFilter<DetailsTable> DetailsView;
+
+    [Serializable]
+    public class MasterTable : IBqlTable
+    {
+
+    }
+
+    [Serializable]
+    public class DetailsTable : IBqlTable
+    {
+
+    }
+
+
+  }
+}]]></CDATA>
+</Graph>

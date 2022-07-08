@@ -6,6 +6,7 @@
                     <Prop Key="Virtual:ApplyStylesheetSkin" />
                     <Prop Key="ID" Value="CstPXSelector1" />
                     <Prop Key="DataField" Value="UsrCorporateRegionID" />
+                    <Prop Key="Required" Value="True" />
                 </PXSelector>
             </AddItem>
             <PXDropDown DataField="Status" OriginalIndex="3" />
