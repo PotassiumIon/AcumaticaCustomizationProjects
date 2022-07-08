@@ -81,6 +81,27 @@ namespace PX.Objects.AR
       }
     }
 
+    public string getCustomerStatusMessage(string status)
+    {
+      switch (status)
+      {
+        case "A":
+          return CR.Messages.Active;
+        case "R":
+          return CR.Messages.Prospect;
+        case "H":
+          return CR.Messages.Hold;
+        case "C":
+          return CR.Messages.CreditHold;
+        case "T":
+          return CR.Messages.OneTime;
+        case "I":
+          return CR.Messages.Inactive;
+        default:
+          return "UNDEFINED";
+      }
+    }
+
 
     protected void Customer_RowUpdated(PXCache cache, PXRowUpdatedEventArgs e)
     {
@@ -104,7 +125,9 @@ namespace PX.Objects.AR
         foreach (BAccount child in AllChildAccounts.Select())
         {
           BAccountExt childExt = child.GetExtension<BAccountExt>();
+
           childExt.UsrMajorTender = ext.UsrMajorTender;
+
           AllChildAccounts.Update(child);
         }
       }
@@ -117,21 +140,18 @@ namespace PX.Objects.AR
          && oldRow.Status != row.Status
          && row.NoteID != null
         ) {
-          
-        PXTrace.WriteInformation("This ran"); 
 
-        CRPMTimeActivity activity = new CRPMTimeActivity();
+        CRPMTimeActivity crpmTimeActivity = Base.Activities.Insert();
+        string status = row.Status;
+        string fullStatus = getCustomerStatusMessage(status);
 
-        string guid = Base.Accessinfo.UserID.ToString();
-        int intuid = int.Parse(guid);
+        crpmTimeActivity.Subject = $"Status Changed to {fullStatus}";
+        crpmTimeActivity.Type = ActivityTypes.Note;
+        crpmTimeActivity.OwnerID = Base.Accessinfo.ContactID;
+        crpmTimeActivity.RefNoteID = row.NoteID;
+        crpmTimeActivity.StartDate = DateTime.Now;
 
-        activity.Subject = $"Customer Status Changed to {row.Status}";
-        activity.Type = ActivityTypes.Note;
-        activity.OwnerID = intuid;
-        activity.RefNoteID = row.NoteID;
-        activity.StartDate = DateTime.Now;
-
-        Base.Activities.Insert(activity);
+        Base.Activities.UpdateCurrent();
 
       }
         

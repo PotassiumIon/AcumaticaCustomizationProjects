@@ -1,0 +1,17 @@
+﻿<Sql TableName="CreateInvoiceStatementMessage" CustomScript="#CDATA">
+    <CDATA name="CustomScript"><![CDATA[IF NOT EXISTS(
+  SELECT * FROM sysobjects WHERE name='InvoiceStatementMessage' and xtype='U'
+)
+
+CREATE TABLE InvoiceStatementMessage
+(
+  MessageID int IDENTITY(1,1) NOT NULL PRIMARY KEY,
+  MessageName nvarchar(30) UNIQUE,
+  Descr ntext,
+)
+
+GO
+--[mssql: Skip]
+
+GO]]></CDATA>
+</Sql>

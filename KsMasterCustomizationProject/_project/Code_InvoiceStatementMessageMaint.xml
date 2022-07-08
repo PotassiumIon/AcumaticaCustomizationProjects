@@ -1,0 +1,35 @@
+﻿<Graph ClassName="InvoiceStatementMessageMaint" Source="#CDATA" IsNew="True" FileType="NewGraph">
+    <CDATA name="Source"><![CDATA[using System;
+using PX.Data;
+using PX.Data.BQL.Fluent;
+
+namespace KsMasterCustomizationProject
+{
+  public class InvoiceStatementMessageMaint : PXGraph<InvoiceStatementMessageMaint>
+  {
+    
+    public SelectFrom<InvoiceStatementMessage>.View InvoiceStatementMessage;
+
+    public PXSave<InvoiceStatementMessage> Save;
+    public PXCancel<InvoiceStatementMessage> Cancel;
+
+
+    public PXFilter<MasterTable> MasterView;
+    public PXFilter<DetailsTable> DetailsView;
+
+    [Serializable]
+    public class MasterTable : IBqlTable
+    {
+
+    }
+
+    [Serializable]
+    public class DetailsTable : IBqlTable
+    {
+
+    }
+
+
+  }
+}]]></CDATA>
+</Graph>

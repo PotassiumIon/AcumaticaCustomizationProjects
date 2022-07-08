@@ -25,24 +25,18 @@
         </layout>
         <data>
             <SiteMap>
-                <row Position="21521" Title="Aging Sort Codes" Url="~/Pages/AR/AR103000.aspx" ScreenID="AR103000" NodeID="f39f1df4-be6b-4de6-9f48-053f58e94ffb" ParentID="00000000-0000-0000-0000-000000000000">
-                    <MUIScreen IsPortal="0" WorkspaceID="c6f8a479-2339-4665-a20d-50f5bf38c228" Order="10" SubcategoryID="1669bef9-e982-485c-a48b-80ce30193385" />
-                    <MUIScreen IsPortal="0" WorkspaceID="d5cbc4c3-5f8b-40da-80c9-49897f1f74b8" Order="10" SubcategoryID="1669bef9-e982-485c-a48b-80ce30193385" />
+                <row Position="21523" Title="Invoice Statement Messages" Url="~/Pages/KT/KT100100.aspx" ScreenID="KT100100" NodeID="e0570d22-ef1a-4c94-94fe-55feab99a562" ParentID="00000000-0000-0000-0000-000000000000">
+                    <MUIScreen IsPortal="0" WorkspaceID="3206e17e-8a34-4e3e-9648-5cee25defde5" Order="30" SubcategoryID="1669bef9-e982-485c-a48b-80ce30193385" />
                 </row>
             </SiteMap>
             <MUIWorkspace>
-                <row IsPortal="0" WorkspaceID="c6f8a479-2339-4665-a20d-50f5bf38c228" Order="146" Title="Payables" Icon="remove_circle" AreaID="338edf81-5456-4735-8601-b213458e93fe" ScreenID="WSAP0000" IsSystem="0">
-                    <MUIFavoriteWorkspace IsPortal="0" Username="" IsFavorite="1" />
-                </row>
-                <row IsPortal="0" WorkspaceID="d5cbc4c3-5f8b-40da-80c9-49897f1f74b8" Order="147" Title="Receivables" Icon="add_circle" AreaID="338edf81-5456-4735-8601-b213458e93fe" ScreenID="WSAR0000" IsSystem="0">
-                    <MUIFavoriteWorkspace IsPortal="0" Username="" IsFavorite="1" />
-                </row>
+                <row IsPortal="0" WorkspaceID="3206e17e-8a34-4e3e-9648-5cee25defde5" Order="784" Title="Configuration" Icon="settings" AreaID="3635ea7d-0975-48ff-b4ac-a870f7e1e8b5" ScreenID="WSCF0000" IsSystem="0" />
             </MUIWorkspace>
             <MUISubcategory>
                 <row IsPortal="0" SubcategoryID="1669bef9-e982-485c-a48b-80ce30193385" Order="96" Name="Configuration" Icon="" IsSystem="0" />
             </MUISubcategory>
             <MUIArea>
-                <row IsPortal="0" AreaID="338edf81-5456-4735-8601-b213458e93fe" Order="10" Name="Financials" />
+                <row IsPortal="0" AreaID="3635ea7d-0975-48ff-b4ac-a870f7e1e8b5" Order="30" Name="Configuration" />
             </MUIArea>
         </data>
     </data-set>

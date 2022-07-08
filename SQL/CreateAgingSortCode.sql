@@ -8,5 +8,3 @@ CREATE TABLE AgingSortCode
   AgingSortCodeCD nvarchar(30) UNIQUE,
   Descr nvarchar(60),
 )
-
-DROP TABLE IF EXISTS AgingSortCode;

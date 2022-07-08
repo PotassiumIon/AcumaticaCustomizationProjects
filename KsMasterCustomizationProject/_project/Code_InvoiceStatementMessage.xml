@@ -1,0 +1,32 @@
+﻿<Graph ClassName="InvoiceStatementMessage" Source="#CDATA" IsNew="True" FileType="NewDac">
+    <CDATA name="Source"><![CDATA[using System;
+using PX.Data;
+
+namespace KsMasterCustomizationProject
+{
+	[Serializable]
+	[PXCacheName("InvoiceStatementMessage")]
+	public class InvoiceStatementMessage : IBqlTable
+	{
+		#region MessageID
+		[PXDBIdentity(IsKey = true)]
+		public virtual int? MessageID { get; set; }
+		public abstract class messageID : PX.Data.BQL.BqlInt.Field<messageID> { }
+		#endregion
+
+		#region MessageName
+		[PXDBString(30, IsKey = true, IsUnicode = true, InputMask = "")]
+		[PXUIField(DisplayName = "Message Name")]
+		public virtual string MessageName { get; set; }
+		public abstract class messageName : PX.Data.BQL.BqlString.Field<messageName> { }
+		#endregion
+
+		#region Descr
+		[PXDBString(IsUnicode = true, InputMask = "")]
+		[PXUIField(DisplayName = "Descr")]
+		public virtual string Descr { get; set; }
+		public abstract class descr : PX.Data.BQL.BqlString.Field<descr> { }
+		#endregion
+	}
+}]]></CDATA>
+</Graph>
