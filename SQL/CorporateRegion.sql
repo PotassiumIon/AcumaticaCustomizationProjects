@@ -8,3 +8,5 @@ CREATE TABLE CorporateRegion
   CorporateRegionCD nvarchar(30) UNIQUE,
   Descr nvarchar(60),
 )
+
+DROP TABLE IF EXISTS CorporateRegion;
