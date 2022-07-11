@@ -93,7 +93,7 @@
         <StateActionFields />
         <StateActionParams />
     </Action>
-    <Action IsActive="True" ActionName="searchDuplicateVendorRef" ActionType="S" DestinationScreenID="AP3010PL" DisplayName="Search Duplicates" MenuFolderType="Inquiry" WindowMode="N" MapEnableRights="1" ExposedToMobile="True">
+    <Action IsActive="True" ActionName="searchDuplicateVendorRef" ActionType="S" DestinationScreenID="AP3010PL" DisplayName="Search Duplicates" MassProcessingScreen="AP3010PL" MenuFolderType="Inquiry" WindowMode="N" MapEnableRights="1" ExposedToMobile="True">
         <Param IsActive="True" ActionName="searchDuplicateVendorRef" Name="APInvoice_invoiceNbr" FromSchema="True" />
         <StateActionFields />
         <StateActionParams />
