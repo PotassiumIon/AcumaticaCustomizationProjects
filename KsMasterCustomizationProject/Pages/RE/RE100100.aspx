@@ -16,7 +16,6 @@
 		<Levels>
 			<px:PXGridLevel DataMember="CorporateRegion">
 			    <Columns>
-				<px:PXGridColumn DataField="CorporateRegionCD" Width="140" ></px:PXGridColumn>
 				<px:PXGridColumn DataField="Descr" Width="220" ></px:PXGridColumn></Columns>
 			</px:PXGridLevel>
 		</Levels>

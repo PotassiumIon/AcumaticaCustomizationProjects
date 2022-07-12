@@ -10,7 +10,6 @@ namespace KsMasterCustomizationProject
   {
     #region AgingSortCodeID
     [PXDBIdentity(IsKey = true)]
-    [PXUIField(DisplayName = "Aging Sort Code ID", Required = true, Visibility = PXUIVisibility.SelectorVisible)]
     public virtual int? AgingSortCodeID { get; set; }
     public abstract class agingSortCodeID : PX.Data.BQL.BqlInt.Field<agingSortCodeID> { }
     #endregion

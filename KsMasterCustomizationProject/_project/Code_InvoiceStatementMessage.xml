@@ -1,32 +1,102 @@
 ﻿<Graph ClassName="InvoiceStatementMessage" Source="#CDATA" IsNew="True" FileType="NewDac">
     <CDATA name="Source"><![CDATA[using System;
 using PX.Data;
+using PX.Objects.CS;
+using PX.Objects.GL;
+using PX.Objects.GL.DAC;
 
 namespace KsMasterCustomizationProject
 {
-	[Serializable]
-	[PXCacheName("InvoiceStatementMessage")]
-	public class InvoiceStatementMessage : IBqlTable
-	{
-		#region MessageID
-		[PXDBIdentity(IsKey = true)]
-		public virtual int? MessageID { get; set; }
-		public abstract class messageID : PX.Data.BQL.BqlInt.Field<messageID> { }
-		#endregion
+  [Serializable]
+  [PXCacheName("InvoiceStatementMessage")]
+  public class InvoiceStatementMessage : IBqlTable
+  {
+    #region MessageID
+    [PXDBIdentity(IsKey = true)]
+    public virtual int? MessageID { get; set; }
+    public abstract class messageID : PX.Data.BQL.BqlInt.Field<messageID> { }
+    #endregion
 
-		#region MessageName
-		[PXDBString(30, IsKey = true, IsUnicode = true, InputMask = "")]
-		[PXUIField(DisplayName = "Message Name")]
-		public virtual string MessageName { get; set; }
-		public abstract class messageName : PX.Data.BQL.BqlString.Field<messageName> { }
-		#endregion
+    #region MessageName
+    [PXDBString(30, IsUnicode = true, InputMask = "")]
+    [PXUIField(DisplayName = "Message Name")]
+    public virtual string MessageName { get; set; }
+    public abstract class messageName : PX.Data.BQL.BqlString.Field<messageName> { }
+    #endregion
 
-		#region Descr
-		[PXDBString(IsUnicode = true, InputMask = "")]
-		[PXUIField(DisplayName = "Descr")]
-		public virtual string Descr { get; set; }
-		public abstract class descr : PX.Data.BQL.BqlString.Field<descr> { }
-		#endregion
-	}
+    #region Descr
+    [PXDBString(IsUnicode = true, InputMask = "")]
+    [PXUIField(DisplayName = "Descr")]
+    public virtual string Descr { get; set; }
+    public abstract class descr : PX.Data.BQL.BqlString.Field<descr> { }
+    #endregion
+
+    #region MessageType
+    [PXDBString(1, IsFixed = true, InputMask = "")]
+    [PXStringList(
+        new string[] {
+        InvoiceStatementMessageTypes.CorporateRegion,
+        InvoiceStatementMessageTypes.State,
+        InvoiceStatementMessageTypes.Organization,
+        InvoiceStatementMessageTypes.Branch,
+        },
+        new string[] {
+        InvoiceStatementMessageTypes.CorporateRegionStr,
+        InvoiceStatementMessageTypes.StateStr,
+        InvoiceStatementMessageTypes.OrganizationStr,
+        InvoiceStatementMessageTypes.BranchStr,
+        }
+      )]
+    [PXUIField(DisplayName = "Message Type")]
+    public virtual string MessageType { get; set; }
+    public abstract class messageType : PX.Data.BQL.BqlString.Field<messageType> { }
+    #endregion
+
+    #region CorporateRegionID
+    [PXDBInt()]
+    [PXUIField(DisplayName = "Corporate Region ID")]
+    [PXSelector(typeof(Search<CorporateRegion.corporateRegionID>), SubstituteKey = typeof(CorporateRegion.corporateRegionCD))]
+    public virtual int? CorporateRegionID { get; set; }
+    public abstract class corporateRegionID : PX.Data.BQL.BqlInt.Field<corporateRegionID> { }
+    #endregion
+
+    #region StateID
+    [PXDBString(50, IsUnicode = true, InputMask = "")]
+    [PXUIField(DisplayName = "State ID")]
+    [PXSelector(typeof(Search<State.stateID>))]
+    public virtual string StateID { get; set; }
+    public abstract class stateID : PX.Data.BQL.BqlString.Field<stateID> { }
+    #endregion
+
+    #region OrganizationID
+    [PXDBInt()]
+    [PXUIField(DisplayName = "Organization ID")]
+    [PXSelector(typeof(Search<Organization.organizationID>), SubstituteKey = typeof(Organization.organizationCD))]
+    public virtual int? OrganizationID { get; set; }
+    public abstract class organizationID : PX.Data.BQL.BqlInt.Field<organizationID> { }
+    #endregion
+
+    #region BranchID
+    [PXDBInt()]
+    [PXUIField(DisplayName = "Branch ID")]
+    [PXSelector(typeof(Search<Branch.branchID>), SubstituteKey = typeof(Branch.branchCD))]
+    public virtual int? BranchID { get; set; }
+    public abstract class branchID : PX.Data.BQL.BqlInt.Field<branchID> { }
+    #endregion
+
+    #region StartDate
+    [PXDBDate()]
+    [PXUIField(DisplayName = "Start Date")]
+    public virtual DateTime? StartDate { get; set; }
+    public abstract class startDate : PX.Data.BQL.BqlDateTime.Field<startDate> { }
+    #endregion
+
+    #region EndDate
+    [PXDBDate()]
+    [PXUIField(DisplayName = "End Date")]
+    public virtual DateTime? EndDate { get; set; }
+    public abstract class endDate : PX.Data.BQL.BqlDateTime.Field<endDate> { }
+    #endregion
+  }
 }]]></CDATA>
 </Graph>

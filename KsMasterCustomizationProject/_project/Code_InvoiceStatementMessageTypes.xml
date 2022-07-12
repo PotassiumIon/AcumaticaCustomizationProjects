@@ -1,0 +1,20 @@
+﻿<Graph ClassName="InvoiceStatementMessageTypes" Source="#CDATA" IsNew="True" FileType="NewFile">
+    <CDATA name="Source"><![CDATA[using System;
+
+namespace KsMasterCustomizationProject
+{
+  public static class InvoiceStatementMessageTypes
+  {
+    public const string CorporateRegion = "C";
+    public const string State = "S";
+    public const string Organization = "O";
+    public const string Branch = "B";
+    
+    public const string CorporateRegionStr = "Corporate Region";
+    public const string StateStr = "State";
+    public const string OrganizationStr = "Organization";
+    public const string BranchStr = "Branch";
+    
+  }
+}]]></CDATA>
+</Graph>

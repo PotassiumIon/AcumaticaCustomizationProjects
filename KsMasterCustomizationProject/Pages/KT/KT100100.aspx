@@ -16,8 +16,14 @@
 		<Levels>
 			<px:PXGridLevel DataMember="InvoiceStatementMessage">
 			    <Columns>
-				<px:PXGridColumn DataField="MessageName" Width="140" />
-				<px:PXGridColumn DataField="Descr" Width="70" /></Columns>
+				<px:PXGridColumn DataField="MessageType" Width="70" />
+				<px:PXGridColumn DataField="CorporateRegionID" Width="140" />
+				<px:PXGridColumn DataField="StateID" Width="180" />
+				<px:PXGridColumn DataField="OrganizationID" Width="140" />
+				<px:PXGridColumn DataField="BranchID" Width="140" />
+				<px:PXGridColumn DataField="Descr" Width="70" ></px:PXGridColumn>
+				<px:PXGridColumn DataField="StartDate" Width="90" />
+				<px:PXGridColumn DataField="EndDate" Width="90" /></Columns>
 			</px:PXGridLevel>
 		</Levels>
 		<AutoSize Container="Window" Enabled="True" MinHeight="150" />

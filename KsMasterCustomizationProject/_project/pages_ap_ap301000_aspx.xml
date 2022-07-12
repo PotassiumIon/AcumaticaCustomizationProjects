@@ -12,4 +12,7 @@
             <PXLabel OriginalIndex="8" />
         </Children>
     </PXFormView>
+    <PXGridColumn DataField="InventoryID" ParentId="phG_tab_Items#0_grid_Levels#0_Columns#4" TypeFullName="PX.Web.UI.PXGridColumn">
+        <Prop Key="Required" Value="True" />
+    </PXGridColumn>
 </Page>

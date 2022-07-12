@@ -10,7 +10,6 @@ namespace KsMasterCustomizationProject
   {
     #region CorporateRegionID
     [PXDBIdentity(IsKey = true)]
-    [PXUIField(DisplayName = "Corporate Region ID", Required = true, Visibility = PXUIVisibility.SelectorVisible)]
     public virtual int? CorporateRegionID { get; set; }
     public abstract class corporateRegionID : PX.Data.BQL.BqlInt.Field<corporateRegionID> { }
     #endregion

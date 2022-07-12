@@ -1,0 +1,115 @@
+﻿<Graph ClassName="APInvoiceEntry" Source="#CDATA" IsNew="True" FileType="ExistingGraph">
+    <CDATA name="Source"><![CDATA[using System;
+using System.Linq;
+using System.Collections;
+using System.Collections.Generic;
+using System.Text;
+using PX.Common;
+using PX.Data;
+using PX.Data.DependencyInjection;
+using PX.Data.WorkflowAPI;
+using PX.LicensePolicy;
+using PX.Objects.Common;
+using PX.Objects.Common.Extensions;
+using PX.Objects.Common.Bql;
+using PX.Objects.Common.Discount;
+using PX.Objects.GL;
+using PX.Objects.GL.FinPeriods;
+using PX.Objects.CM.Extensions;
+using PX.Objects.CS;
+using PX.Objects.CR;
+using PX.Objects.CT;
+using PX.Objects.PM;
+using PX.Objects.TX;
+using PX.Objects.IN;
+using PX.Objects.IN.Services;
+using PX.Objects.CA;
+using PX.Objects.BQLConstants;
+using PX.Objects.EP;
+using PX.Objects.PO;
+using PX.Objects.SO;
+using PX.Objects.DR;
+using PX.Objects.AR;
+using PX.TM;
+using PX.Objects.Extensions.MultiCurrency.AP;
+using AP1099Hist = PX.Objects.AP.Overrides.APDocumentRelease.AP1099Hist;
+using AP1099Yr = PX.Objects.AP.Overrides.APDocumentRelease.AP1099Yr;
+using PX.Objects.GL.Reclassification.UI;
+using Branch = PX.Objects.GL.Branch;
+using CRLocation = PX.Objects.CR.Standalone.Location;
+using PX.Objects.AP.BQL;
+using PX.Objects.Common.GraphExtensions.Abstract;
+using PX.Objects.Common.GraphExtensions.Abstract.DAC;
+using PX.Objects.Common.GraphExtensions.Abstract.Mapping;
+using PX.Objects.Extensions.CostAccrual;
+using PX.Data.BQL.Fluent;
+using PX.Data.BQL;
+using PX.Objects;
+using PX.Objects.AP;
+
+namespace PX.Objects.AP
+{
+  public class APInvoiceEntry_Extension : PXGraphExtension<APInvoiceEntry>
+  {
+#region Event Handlers
+
+    public SelectFrom<INItemClass>.View AllItemClasses;
+    public SelectFrom<InventoryItem>.View AllInventoryItems;
+
+    protected void APTran_InventoryID_FieldUpdated(PXCache cache, PXFieldUpdatedEventArgs e)
+    {
+
+      APTran row = (APTran) e.Row;
+      APInvoice apInvoice = Base.CurrentDocument.Current;
+      InventoryItem item = null;
+      INItemClass itemClass = null;
+
+      if (
+        row != null
+        && row.InventoryID != null
+       )
+      {
+        foreach (InventoryItem value in AllInventoryItems.Select())
+        {
+          if (value.InventoryID == row.InventoryID)
+          {
+            item = value;
+            break;
+          }
+        }
+      }
+
+
+      if (item != null)
+      {
+        foreach (INItemClass value in AllItemClasses.Select())
+        {
+          if (value.ItemClassID.Equals(item.ItemClassID))
+          {
+            itemClass = value;
+            break;
+          }
+        }
+      }
+
+      if (
+          row != null
+          && row.InventoryID != null
+          && apInvoice != null
+          && apInvoice.DocDesc != null
+          && itemClass != null
+          && itemClass.ItemClassCD.Contains("MISC")
+          )
+      {
+        PXTrace.WriteInformation("MISCEXP item - inserting APInvoice.DocDes into APTran.TranDesc");
+        cache.SetValueExt<APTran.tranDesc>(row, apInvoice.DocDesc);
+      }
+
+
+
+    }
+
+    #endregion
+  }
+}]]></CDATA>
+</Graph>
