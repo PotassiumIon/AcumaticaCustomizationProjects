@@ -51,7 +51,7 @@ namespace PX.Objects.AP
 {
   public class APInvoiceEntry_Extension : PXGraphExtension<APInvoiceEntry>
   {
-#region Event Handlers
+    #region Event Handlers
 
     public SelectFrom<INItemClass>.View AllItemClasses;
     public SelectFrom<InventoryItem>.View AllInventoryItems;
@@ -59,10 +59,10 @@ namespace PX.Objects.AP
     protected void APTran_InventoryID_FieldUpdated(PXCache cache, PXFieldUpdatedEventArgs e)
     {
 
-      APTran row = (APTran) e.Row;
+      APTran row = (APTran)e.Row;
       APInvoice apInvoice = Base.CurrentDocument.Current;
       InventoryItem item = null;
-      INItemClass itemClass = null;
+      // INItemClass itemClass = null;
 
       if (
         row != null
@@ -79,7 +79,8 @@ namespace PX.Objects.AP
         }
       }
 
-
+      /**
+       * 
       if (item != null)
       {
         foreach (INItemClass value in AllItemClasses.Select())
@@ -91,21 +92,20 @@ namespace PX.Objects.AP
           }
         }
       }
+      */
 
       if (
           row != null
           && row.InventoryID != null
           && apInvoice != null
           && apInvoice.DocDesc != null
-          && itemClass != null
-          && itemClass.ItemClassCD.Contains("MISC")
+          && item != null
+          && item.InventoryCD != null
+          && item.InventoryCD.Equals("MISCEXP")
           )
       {
-        PXTrace.WriteInformation("MISCEXP item - inserting APInvoice.DocDes into APTran.TranDesc");
         cache.SetValueExt<APTran.tranDesc>(row, apInvoice.DocDesc);
       }
-
-
 
     }
 
