@@ -1,0 +1,30 @@
+﻿<Graph ClassName="APInvoiceVendorDuplicateFilter" Source="#CDATA" IsNew="True" FileType="NewDac">
+    <CDATA name="Source"><![CDATA[using System;
+using PX.Data;
+using PX.Objects.AP;
+using PX.Data.BQL;
+using PX.Data.BQL.Fluent;
+
+namespace KsMasterCustomizationProject
+{
+    [PXCacheName("Duplcate Vendor Filter")]
+    public class APInvoiceVendorDuplicateFilter : IBqlTable
+    {
+      #region RefNbr
+      [PXString()]
+      [PXSelector(typeof(Search<APInvoice.refNbr>))]
+      [PXUIField(DisplayName = "Reference Nbr.")]
+      public virtual string RefNbr { get; set; }
+      public abstract class refNbr : PX.Data.BQL.BqlString.Field<refNbr> { }
+      #endregion
+
+      #region InvoiceNbr
+      [PXString()]
+      [PXSelector(typeof(Search<APInvoice.invoiceNbr>))]
+      [PXUIField(DisplayName = "Vendor Ref.")]
+      public virtual string InvoiceNbr { get; set; }
+      public abstract class invoiceNbr : PX.Data.BQL.BqlString.Field<invoiceNbr> { }
+      #endregion
+    }
+}]]></CDATA>
+</Graph>

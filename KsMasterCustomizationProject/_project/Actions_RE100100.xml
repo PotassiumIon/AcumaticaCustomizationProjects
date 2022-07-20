@@ -1,0 +1,5 @@
+﻿<Actions ScreenID="RE100100">
+    <Category IsActive="True" DisplayName="Actions" CategoryName="Action" LineNbr="0" />
+    <Category IsActive="True" DisplayName="Inquiries" CategoryName="Inquiry" LineNbr="1" />
+    <Category IsActive="True" DisplayName="Reports" CategoryName="Report" LineNbr="2" />
+</Actions>

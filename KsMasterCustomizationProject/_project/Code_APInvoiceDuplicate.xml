@@ -1,0 +1,24 @@
+﻿<Graph ClassName="APInvoiceDuplicate" Source="#CDATA" IsNew="True" FileType="NewDac">
+    <CDATA name="Source"><![CDATA[using System;
+using PX.Data;
+using PX.Objects.AP;
+using PX.Data.BQL;
+using PX.Data.BQL.Fluent;
+
+namespace KsMasterCustomizationProject
+{
+    [PXCacheName("APInvoice Duplicate")]
+    public class APInvoiceDuplicate : APInvoice
+    {
+      [PXSelector(typeof(Search<APInvoice.refNbr>))]
+      public new abstract class refNbr : BqlString.Field<refNbr> { };
+      public new abstract class invoiceNbr : BqlString.Field<invoiceNbr> { };
+      // public new abstract class acctName : BqlString.Field<Vendor.acctName> { };
+      public new abstract class invoiceDate : BqlDateTime.Field<invoiceDate> { };
+      public new abstract class docDesc : BqlString.Field<docDesc> { };
+      public new abstract class curyOrigDocAmt : BqlDecimal.Field<curyOrigDocAmt> { };
+      public new abstract class vendorID : BqlInt.Field<vendorID> { };
+
+    }
+}]]></CDATA>
+</Graph>

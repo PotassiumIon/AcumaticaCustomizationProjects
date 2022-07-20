@@ -8,7 +8,7 @@ using PX.Common;
 using PX.Data;
 using PX.Data.DependencyInjection;
 using PX.Data.WorkflowAPI;
-using PX.LicensePolicy;
+//using PX.LicensePolicy;
 using PX.Objects.Common;
 using PX.Objects.Common.Extensions;
 using PX.Objects.Common.Bql;
@@ -46,6 +46,7 @@ using PX.Data.BQL.Fluent;
 using PX.Data.BQL;
 using PX.Objects;
 using PX.Objects.AP;
+using KsMasterCustomizationProject;
 
 namespace PX.Objects.AP
 {
@@ -55,6 +56,7 @@ namespace PX.Objects.AP
 
     public SelectFrom<INItemClass>.View AllItemClasses;
     public SelectFrom<InventoryItem>.View AllInventoryItems;
+    public SelectFrom<APInvoice>.View DuplicateVendorreferences;
 
     protected void APTran_InventoryID_FieldUpdated(PXCache cache, PXFieldUpdatedEventArgs e)
     {
@@ -109,6 +111,43 @@ namespace PX.Objects.AP
 
     }
 
+    #endregion
+
+    #region Actions
+    public PXAction<APInvoice> ViewDuplicates;
+    [PXButton(DisplayOnMainToolbar = false)]
+    [PXUIField(DisplayName = "Search Duplicates", Enabled = true)]
+    protected virtual void viewDuplicates()
+    {
+      APInvoice invoice = Base.Document.Current;
+
+
+      if (invoice != null && invoice.RefNbr != null && invoice.InvoiceNbr != null)
+      {
+        var duplicates = SelectFrom<APInvoice>.Where<
+        APInvoice.invoiceNbr.FromCurrent.IsEqual<APInvoice.invoiceNbr>
+        .And<APInvoice.refNbr.FromCurrent.IsNotEqual<APInvoice.refNbr>>
+        >.View.Select(Base);
+
+        if (duplicates.Count > 0)
+        {
+          var graph = PXGraph.CreateInstance<APInvoiceVendorDuplicatesInq>();
+            
+          graph.MasterView.Current.InvoiceNbr = invoice.InvoiceNbr;
+          graph.MasterView.Current.RefNbr = invoice.RefNbr;
+
+          throw new PXPopupRedirectException(graph, "Vendor Duplicates Inquiry");
+          
+        } else
+        {
+          throw new PXSetPropertyException("No Duplicates Found", PXErrorLevel.RowError);
+        }
+
+      }
+      else {
+        throw new PXSetPropertyException("No Reference Number", PXErrorLevel.RowError);
+      }
+    }
     #endregion
   }
 }]]></CDATA>

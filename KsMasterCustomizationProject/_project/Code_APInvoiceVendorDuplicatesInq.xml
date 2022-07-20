@@ -1,0 +1,69 @@
+﻿<Graph ClassName="APInvoiceVendorDuplicatesInq" Source="#CDATA" IsNew="True" FileType="NewGraph">
+    <CDATA name="Source"><![CDATA[using System;
+using PX.Data;
+using PX.Objects.AP;
+using PX.Data.BQL;
+using PX.Data.BQL.Fluent;
+
+namespace KsMasterCustomizationProject
+{
+  public class APInvoiceVendorDuplicatesInq : PXGraph<APInvoiceVendorDuplicatesInq>
+  {
+
+    // public PXSave<APInvoiceVendorDuplicateFilter> Save;
+    public PXCancel<APInvoiceVendorDuplicateFilter> Cancel;
+
+    public PXFilter<APInvoiceVendorDuplicateFilter> MasterView;
+
+    [PXFilterable]
+    public SelectFrom<APInvoiceDuplicate>
+      .LeftJoin<Vendor>.On<APInvoiceDuplicate.vendorID.IsEqual<Vendor.bAccountID>>
+      .Where<
+        APInvoiceVendorDuplicateFilter.invoiceNbr.FromCurrent.IsEqual<APInvoiceDuplicate.invoiceNbr>
+        .And<APInvoiceVendorDuplicateFilter.refNbr.FromCurrent.IsNotEqual<APInvoiceDuplicate.refNbr>>
+      >
+      .View.ReadOnly DetailsView;
+
+
+    [PXHidden]
+    public class MasterTable : IBqlTable
+    {
+
+    }
+
+    [PXHidden]
+    public class DetailsTable : IBqlTable
+    {
+
+    }
+
+    public override bool IsDirty
+    {
+      get
+      {
+        return false;
+      }
+    }
+
+    public PXAction<APInvoiceDuplicate> ViewInvoice;
+    [PXButton(DisplayOnMainToolbar = false)]
+    [PXUIField]
+    protected virtual void viewInvoice()
+    {
+      APInvoiceDuplicate invoice = DetailsView.Current;
+      var graph = CreateInstance<APInvoiceEntry>();
+      graph.Document.Current = graph.Document.Search<APInvoice.refNbr>(invoice.RefNbr);
+
+      if (graph.Document.Current != null)
+      {
+        throw new PXRedirectRequiredException(graph, true, "Duplicate Invoice");
+      }
+
+      
+    }
+
+  }
+
+
+}]]></CDATA>
+</Graph>
