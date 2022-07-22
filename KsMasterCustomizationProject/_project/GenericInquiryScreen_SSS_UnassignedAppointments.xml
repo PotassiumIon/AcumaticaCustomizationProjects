@@ -1,0 +1,406 @@
+﻿<GenericInquiryScreen>
+    <data-set>
+        <relations format-version="3" relations-version="20210225" main-table="GIDesign" stable-sharing="True" file-name="(Name)">
+            <link from="GIFilter (DesignID)" to="GIDesign (DesignID)" />
+            <link from="GIGroupBy (DesignID)" to="GIDesign (DesignID)" />
+            <link from="GIMassAction (DesignID)" to="GIDesign (DesignID)" />
+            <link from="GIMassUpdateField (DesignID)" to="GIDesign (DesignID)" />
+            <link from="GINavigationScreen (DesignID)" to="GIDesign (DesignID)" />
+            <link from="GINavigationParameter (DesignID, NavigationScreenLineNbr)" to="GINavigationScreen (DesignID, LineNbr)" />
+            <link from="GINavigationCondition (DesignID, NavigationScreenLineNbr)" to="GINavigationScreen (DesignID, LineNbr)" />
+            <link from="GIOn (DesignID, RelationNbr)" to="GIRelation (DesignID, LineNbr)" />
+            <link from="GIRecordDefault (DesignID)" to="GIDesign (DesignID)" />
+            <link from="GIRelation (DesignID, ParentTable)" to="GITable (DesignID, Alias)" />
+            <link from="GIRelation (DesignID, ChildTable)" to="GITable (DesignID, Alias)" />
+            <link from="GIResult (DesignID)" to="GIDesign (DesignID)" />
+            <link from="GIResult (ObjectName, DesignID)" to="GITable (Alias, DesignID)" />
+            <link from="GISort (DesignID)" to="GIDesign (DesignID)" />
+            <link from="GITable (DesignID)" to="GIDesign (DesignID)" />
+            <link from="GIWhere (DesignID)" to="GIDesign (DesignID)" />
+            <link from="SiteMap (Url)" to="GIDesign (DesignID)" type="WeakByUrl" linkname="toDesignById" baseurl="~/GenericInquiry/GenericInquiry.aspx" paramnames="id" />
+            <link from="SiteMap (Url)" to="GIDesign (Name)" type="WeakByUrl" linkname="toDesignByName" baseurl="~/GenericInquiry/GenericInquiry.aspx" />
+            <link from="ListEntryPoint (ListScreenID)" to="SiteMap (ScreenID)" />
+            <link from="SiteMap (ScreenID)" to="GIDesign (PrimaryScreenIDNew)" linkname="to1Screen" />
+            <link from="FilterHeader (ScreenID)" to="SiteMap (ScreenID)" />
+            <link from="FilterRow (FilterID)" to="FilterHeader (FilterID)" />
+            <link from="PivotTable (NoteID)" to="FilterHeader (RefNoteID)" />
+            <link from="PivotField (ScreenID, PivotTableID)" to="PivotTable (ScreenID, PivotTableID)" />
+            <link from="MUIScreen (NodeID)" to="SiteMap (NodeID)" />
+            <link from="MUIWorkspace (WorkspaceID)" to="MUIScreen (WorkspaceID)" type="FromMaster" linkname="workspaceToScreen" split-location="yes" updateable="True" />
+            <link from="MUISubcategory (SubcategoryID)" to="MUIScreen (SubcategoryID)" type="FromMaster" updateable="True" />
+            <link from="MUITile (ScreenID)" to="SiteMap (ScreenID)" />
+            <link from="MUIWorkspace (WorkspaceID)" to="MUITile (WorkspaceID)" type="FromMaster" linkname="workspaceToTile" split-location="yes" updateable="True" />
+            <link from="MUIArea (AreaID)" to="MUIWorkspace (AreaID)" type="FromMaster" updateable="True" />
+            <link from="MUIPinnedScreen (NodeID, WorkspaceID)" to="MUIScreen (NodeID, WorkspaceID)" type="WeakIfEmpty" isEmpty="Username" />
+            <link from="MUIFavoriteWorkspace (WorkspaceID)" to="MUIWorkspace (WorkspaceID)" type="WeakIfEmpty" isEmpty="Username" />
+            <link from="GIDesign (NoteID)" to="Note (NoteID)" type="Note" />
+            <link from="GIFilter (NoteID)" to="Note (NoteID)" type="Note" />
+            <link from="GIFilter (NoteID)" to="GIFilterKvExt (RecordID)" type="RowKvExt" />
+            <link from="GIGroupBy (NoteID)" to="Note (NoteID)" type="Note" />
+            <link from="GIOn (NoteID)" to="Note (NoteID)" type="Note" />
+            <link from="GIRelation (NoteID)" to="Note (NoteID)" type="Note" />
+            <link from="GIResult (NoteID)" to="Note (NoteID)" type="Note" />
+            <link from="GIResult (NoteID)" to="GIResultKvExt (RecordID)" type="RowKvExt" />
+            <link from="GISort (NoteID)" to="Note (NoteID)" type="Note" />
+            <link from="GITable (NoteID)" to="Note (NoteID)" type="Note" />
+            <link from="GIWhere (NoteID)" to="Note (NoteID)" type="Note" />
+            <link from="FilterHeader (NoteID)" to="Note (NoteID)" type="Note" />
+            <link from="FilterHeader (NoteID)" to="FilterHeaderKvExt (RecordID)" type="RowKvExt" />
+        </relations>
+        <layout>
+            <table name="GIDesign">
+                <table name="GIFilter" uplink="(DesignID) = (DesignID)">
+                    <table name="Note" uplink="(NoteID) = (NoteID)" />
+                    <table name="GIFilterKvExt" uplink="(NoteID) = (RecordID)" />
+                </table>
+                <table name="GIGroupBy" uplink="(DesignID) = (DesignID)">
+                    <table name="Note" uplink="(NoteID) = (NoteID)" />
+                </table>
+                <table name="GIMassAction" uplink="(DesignID) = (DesignID)" />
+                <table name="GIMassUpdateField" uplink="(DesignID) = (DesignID)" />
+                <table name="GINavigationScreen" uplink="(DesignID) = (DesignID)">
+                    <table name="GINavigationParameter" uplink="(DesignID, LineNbr) = (DesignID, NavigationScreenLineNbr)" />
+                    <table name="GINavigationCondition" uplink="(DesignID, LineNbr) = (DesignID, NavigationScreenLineNbr)" />
+                </table>
+                <table name="GIRecordDefault" uplink="(DesignID) = (DesignID)" />
+                <table name="GISort" uplink="(DesignID) = (DesignID)">
+                    <table name="Note" uplink="(NoteID) = (NoteID)" />
+                </table>
+                <table name="GITable" uplink="(DesignID) = (DesignID)">
+                    <table name="GIRelation" uplink="(DesignID, Alias) = (DesignID, ParentTable)">
+                        <table name="GIOn" uplink="(DesignID, LineNbr) = (DesignID, RelationNbr)">
+                            <table name="Note" uplink="(NoteID) = (NoteID)" />
+                        </table>
+                        <table name="Note" uplink="(NoteID) = (NoteID)" />
+                    </table>
+                    <table name="GIResult" uplink="(Alias, DesignID) = (ObjectName, DesignID)">
+                        <table name="Note" uplink="(NoteID) = (NoteID)" />
+                        <table name="GIResultKvExt" uplink="(NoteID) = (RecordID)" />
+                    </table>
+                    <table name="Note" uplink="(NoteID) = (NoteID)" />
+                </table>
+                <table name="GIWhere" uplink="(DesignID) = (DesignID)">
+                    <table name="Note" uplink="(NoteID) = (NoteID)" />
+                </table>
+                <table name="SiteMap" uplink="(DesignID) = (Url)" linkname="toDesignById">
+                    <table name="ListEntryPoint" uplink="(ScreenID) = (ListScreenID)" />
+                    <table name="FilterHeader" uplink="(ScreenID) = (ScreenID)">
+                        <table name="FilterRow" uplink="(FilterID) = (FilterID)" />
+                        <table name="PivotTable" uplink="(RefNoteID) = (NoteID)">
+                            <table name="PivotField" uplink="(ScreenID, PivotTableID) = (ScreenID, PivotTableID)" />
+                        </table>
+                        <table name="Note" uplink="(NoteID) = (NoteID)" />
+                        <table name="FilterHeaderKvExt" uplink="(NoteID) = (RecordID)" />
+                    </table>
+                    <table name="MUIScreen" uplink="(NodeID) = (NodeID)">
+                        <table name="MUIPinnedScreen" uplink="(NodeID, WorkspaceID) = (NodeID, WorkspaceID)" />
+                    </table>
+                    <table name="MUITile" uplink="(ScreenID) = (ScreenID)" />
+                </table>
+                <table name="SiteMap" uplink="(Name) = (Url)" linkname="toDesignByName">
+                    <table name="ListEntryPoint" uplink="(ScreenID) = (ListScreenID)" />
+                    <table name="FilterHeader" uplink="(ScreenID) = (ScreenID)">
+                        <table name="FilterRow" uplink="(FilterID) = (FilterID)" />
+                        <table name="PivotTable" uplink="(RefNoteID) = (NoteID)">
+                            <table name="PivotField" uplink="(ScreenID, PivotTableID) = (ScreenID, PivotTableID)" />
+                        </table>
+                        <table name="Note" uplink="(NoteID) = (NoteID)" />
+                        <table name="FilterHeaderKvExt" uplink="(NoteID) = (RecordID)" />
+                    </table>
+                    <table name="MUIScreen" uplink="(NodeID) = (NodeID)">
+                        <table name="MUIPinnedScreen" uplink="(NodeID, WorkspaceID) = (NodeID, WorkspaceID)" />
+                    </table>
+                    <table name="MUITile" uplink="(ScreenID) = (ScreenID)" />
+                </table>
+                <table name="SiteMap" uplink="(PrimaryScreenIDNew) = (ScreenID)" linkname="to1Screen">
+                    <table name="ListEntryPoint" uplink="(ScreenID) = (ListScreenID)" />
+                    <table name="FilterHeader" uplink="(ScreenID) = (ScreenID)">
+                        <table name="FilterRow" uplink="(FilterID) = (FilterID)" />
+                        <table name="PivotTable" uplink="(RefNoteID) = (NoteID)">
+                            <table name="PivotField" uplink="(ScreenID, PivotTableID) = (ScreenID, PivotTableID)" />
+                        </table>
+                        <table name="Note" uplink="(NoteID) = (NoteID)" />
+                        <table name="FilterHeaderKvExt" uplink="(NoteID) = (RecordID)" />
+                    </table>
+                    <table name="MUIScreen" uplink="(NodeID) = (NodeID)">
+                        <table name="MUIPinnedScreen" uplink="(NodeID, WorkspaceID) = (NodeID, WorkspaceID)" />
+                    </table>
+                    <table name="MUITile" uplink="(ScreenID) = (ScreenID)" />
+                </table>
+                <table name="Note" uplink="(NoteID) = (NoteID)" />
+            </table>
+            <table name="MUIWorkspace">
+                <table name="MUIFavoriteWorkspace" uplink="(WorkspaceID) = (WorkspaceID)" />
+            </table>
+            <table name="MUISubcategory" />
+            <table name="MUIArea" />
+        </layout>
+        <data>
+            <GIDesign>
+                <row DesignID="5ffe4263-032c-446c-b363-b9fc1908bc2f" Name="SSS-UnassignedAppointments" FilterColCount="3" PageSize="0" ExportTop="0" PrimaryScreenIDNew="FS300200" NewRecordCreationEnabled="1" MassDeleteEnabled="0" AutoConfirmDelete="0" MassRecordsUpdateEnabled="0" MassActionsOnRecordsEnabled="1" ExposeViaOData="0" ExposeViaMobile="0" ShowDeletedRecords="0" NotesAndFilesTable="$&lt;None&gt;">
+                    <GIGroupBy LineNbr="4" IsActive="1" DataFieldName="FSAppointment.RefNbr" />
+                    <GIGroupBy LineNbr="3" IsActive="1" DataFieldName="FSAppointment.SrvOrdType" />
+                    <GIGroupBy LineNbr="2" IsActive="1" DataFieldName="FSAppointment.RefNbr" />
+                    <GIGroupBy LineNbr="1" IsActive="1" DataFieldName="FSAppointment.SrvOrdType" />
+                    <GINavigationScreen Link="FS300200" LineNbr="3" SortOrder="3" WindowMode="S" IsActive="1">
+                        <GINavigationParameter LineNbr="6" FieldName="RefNbr" ParameterName="FSAppointment.refNbr" IsExpression="0" />
+                        <GINavigationParameter LineNbr="5" FieldName="SrvOrdType" ParameterName="FSAppointment.srvOrdType" IsExpression="0" />
+                    </GINavigationScreen>
+                    <GINavigationScreen Link="FS300200" LineNbr="2" SortOrder="2" WindowMode="S" IsActive="1">
+                        <GINavigationParameter LineNbr="4" FieldName="RefNbr" ParameterName="FSAppointment.refNbr" IsExpression="0" />
+                        <GINavigationParameter LineNbr="3" FieldName="SrvOrdType" ParameterName="FSAppointment.srvOrdType" IsExpression="0" />
+                    </GINavigationScreen>
+                    <GINavigationScreen Link="FS300200" LineNbr="1" SortOrder="1" WindowMode="S" IsActive="1">
+                        <GINavigationParameter LineNbr="2" FieldName="RefNbr" ParameterName="FSAppointment.RefNbr" IsExpression="0" />
+                        <GINavigationParameter LineNbr="1" FieldName="SrvOrdType" ParameterName="FSAppointment.SrvOrdType" IsExpression="0" />
+                    </GINavigationScreen>
+                    <GISort LineNbr="2" IsActive="1" DataFieldName="FSAppointment.ScheduledDateTimeBegin" SortOrder="D" />
+                    <GISort LineNbr="1" IsActive="1" DataFieldName="FSAppointment.scheduledDateTimeBegin" SortOrder="D" />
+                    <GITable Alias="UsersLM" Name="PX.SM.Users">
+                        <GIResult LineNbr="64" SortOrder="64" IsActive="1" Field="username" SchemaField="FSAppointmentEmployee.LastModifiedByID" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="0dd2fc9a-b792-4b81-9495-3dd8f50fb074" />
+                        <GIResult LineNbr="26" SortOrder="26" IsActive="1" Field="username" SchemaField="FSAppointmentEmployee.LastModifiedByID" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="cd8afd06-d8bf-42d0-9ef5-b2d0ad2ad2eb" />
+                    </GITable>
+                    <GITable Alias="SalesPerson" Name="PX.Objects.AR.SalesPerson">
+                        <GIResult LineNbr="62" SortOrder="62" IsActive="1" Field="salesPersonCD" SchemaField="FSAppointment.SalesPersonID" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="472e300c-00bc-4f5f-9f49-330ceb560409" />
+                        <GIResult LineNbr="24" SortOrder="24" IsActive="1" Field="salesPersonCD" SchemaField="FSAppointment.SalesPersonID" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="44d274ff-5df7-4edf-8e40-975a3815b324" />
+                    </GITable>
+                    <GITable Alias="PMProject" Name="PX.Objects.PM.PMProject">
+                        <GIResult LineNbr="67" SortOrder="67" IsActive="1" Field="contractCD" SchemaField="FSServiceOrder.ProjectID" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="531ce751-77e9-4faf-bedb-86d32eb823fe" />
+                        <GIResult LineNbr="29" SortOrder="29" IsActive="1" Field="contractCD" SchemaField="FSServiceOrder.ProjectID" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="e805a63f-4178-4b5b-87a3-e552b59412e5" />
+                    </GITable>
+                    <GITable Alias="LocationBC" Name="PX.Objects.CR.Location">
+                        <GIResult LineNbr="58" SortOrder="58" IsActive="1" Field="locationCD" SchemaField="FSServiceOrder.BillLocationID" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="f4aab64c-bd34-4663-aa7c-a9156bd0d1aa" />
+                        <GIResult LineNbr="20" SortOrder="20" IsActive="1" Field="locationCD" SchemaField="FSServiceOrder.BillLocationID" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="2ae8f01c-2b33-48db-b84c-f0da36b3932a" />
+                    </GITable>
+                    <GITable Alias="Location" Name="PX.Objects.CR.Location">
+                        <GIResult LineNbr="56" SortOrder="56" IsActive="1" Field="descr" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="639c74f1-317c-4c34-b181-46cbdc2be9a5" />
+                        <GIResult LineNbr="55" SortOrder="55" IsActive="1" Field="locationCD" SchemaField="FSServiceOrder.LocationID" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="cb870fe3-4bb8-452b-a389-1d94eb8b0774" />
+                        <GIResult LineNbr="18" SortOrder="18" IsActive="1" Field="descr" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="7de0c949-0b82-4878-825a-c02e768ec1b9" />
+                        <GIResult LineNbr="17" SortOrder="17" IsActive="1" Field="locationCD" SchemaField="FSServiceOrder.LocationID" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="e43369c0-cbb0-4cca-a4f5-8285ba9af5dd" />
+                    </GITable>
+                    <GITable Alias="FSWFStage" Name="PX.Objects.FS.FSWFStage">
+                        <GIResult LineNbr="61" SortOrder="61" IsActive="1" Field="wFStageCD" SchemaField="FSAppointment.WFStageID" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="5e85682b-fe72-45bc-96d0-256d3f143dbe" />
+                        <GIResult LineNbr="23" SortOrder="23" IsActive="1" Field="wFStageCD" SchemaField="FSAppointment.WFStageID" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="018129f7-14c5-46c2-aa34-1601b8213daa" />
+                    </GITable>
+                    <GITable Alias="FSSrvOrdType" Name="PX.Objects.FS.FSSrvOrdType">
+                        <GIResult LineNbr="50" SortOrder="50" IsActive="1" Field="behavior" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="e1179297-62cc-4388-8a73-724c904cf3b2" />
+                        <GIResult LineNbr="12" SortOrder="12" IsActive="1" Field="behavior" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="43feab76-75b2-4ff5-9529-095e0d6c25c8" />
+                    </GITable>
+                    <GITable Alias="FSServiceOrder" Name="PX.Objects.FS.FSServiceOrder">
+                        <GIRelation LineNbr="28" ChildTable="PMProject" IsActive="1" JoinType="L">
+                            <GIOn LineNbr="33" ParentField="projectID" Condition="E " ChildField="contractID" Operation="A" />
+                        </GIRelation>
+                        <GIRelation LineNbr="27" ChildTable="EPEmployee" IsActive="1" JoinType="L">
+                            <GIOn LineNbr="32" ParentField="assignedEmpID" Condition="E " ChildField="bAccountID" Operation="A" />
+                        </GIRelation>
+                        <GIRelation LineNbr="24" ChildTable="LocationBC" IsActive="1" JoinType="L">
+                            <GIOn LineNbr="29" ParentField="billCustomerID" Condition="E " ChildField="bAccountID" Operation="A" />
+                            <GIOn LineNbr="28" ParentField="billLocationID" Condition="E " ChildField="locationID" Operation="A" />
+                        </GIRelation>
+                        <GIRelation LineNbr="23" ChildTable="FSCustomer" IsActive="1" JoinType="L">
+                            <GIOn LineNbr="27" ParentField="billCustomerID" Condition="E " ChildField="bAccountID" Operation="A" />
+                        </GIRelation>
+                        <GIRelation LineNbr="22" ChildTable="Location" IsActive="1" JoinType="L">
+                            <GIOn LineNbr="26" ParentField="billCustomerID" Condition="E " ChildField="bAccountID" Operation="A" />
+                            <GIOn LineNbr="25" ParentField="locationID" Condition="E " ChildField="locationID" Operation="A" />
+                        </GIRelation>
+                        <GIRelation LineNbr="21" ChildTable="FSBranchLocation" IsActive="1" JoinType="L">
+                            <GIOn LineNbr="24" ParentField="branchLocationID" Condition="E " ChildField="branchLocationID" Operation="A" />
+                        </GIRelation>
+                        <GIRelation LineNbr="18" ChildTable="BAccount" IsActive="1" JoinType="L">
+                            <GIOn LineNbr="21" ParentField="customerID" Condition="E " ChildField="bAccountID" Operation="A" />
+                        </GIRelation>
+                        <GIRelation LineNbr="12" ChildTable="PMProject" IsActive="1" JoinType="L">
+                            <GIOn LineNbr="14" ParentField="projectID" Condition="E " ChildField="contractID" Operation="A" />
+                        </GIRelation>
+                        <GIRelation LineNbr="11" ChildTable="EPEmployee" IsActive="1" JoinType="L">
+                            <GIOn LineNbr="13" ParentField="assignedEmpID" Condition="E " ChildField="bAccountID" Operation="A" />
+                        </GIRelation>
+                        <GIRelation LineNbr="8" ChildTable="LocationBC" IsActive="1" JoinType="L">
+                            <GIOn LineNbr="10" ParentField="billCustomerID" Condition="E " ChildField="bAccountID" Operation="A" />
+                            <GIOn LineNbr="9" ParentField="billLocationID" Condition="E " ChildField="locationID" Operation="A" />
+                        </GIRelation>
+                        <GIRelation LineNbr="7" ChildTable="FSCustomer" IsActive="1" JoinType="L">
+                            <GIOn LineNbr="8" ParentField="billCustomerID" Condition="E " ChildField="bAccountID" Operation="A" />
+                        </GIRelation>
+                        <GIRelation LineNbr="6" ChildTable="Location" IsActive="1" JoinType="L">
+                            <GIOn LineNbr="7" ParentField="billCustomerID" Condition="E " ChildField="bAccountID" Operation="A" />
+                            <GIOn LineNbr="6" ParentField="locationID" Condition="E " ChildField="locationID" Operation="A" />
+                        </GIRelation>
+                        <GIRelation LineNbr="5" ChildTable="FSBranchLocation" IsActive="1" JoinType="L">
+                            <GIOn LineNbr="5" ParentField="branchLocationID" Condition="E " ChildField="branchLocationID" Operation="A" />
+                        </GIRelation>
+                        <GIRelation LineNbr="2" ChildTable="BAccount" IsActive="1" JoinType="L">
+                            <GIOn LineNbr="2" ParentField="customerID" Condition="E " ChildField="bAccountID" Operation="A" />
+                        </GIRelation>
+                        <GIResult LineNbr="51" SortOrder="51" IsActive="1" Field="refNbr" IsVisible="0" DefaultNav="1" QuickFilter="0" FastFilter="1" RowID="f2fcb4c7-4e3d-4231-8e0c-8036c38498bc" />
+                        <GIResult LineNbr="13" SortOrder="13" IsActive="1" Field="refNbr" IsVisible="0" DefaultNav="1" QuickFilter="0" FastFilter="1" RowID="f8974928-4d5f-4684-b163-a1d68806de22" />
+                    </GITable>
+                    <GITable Alias="FSServiceContract" Name="PX.Objects.FS.FSServiceContract">
+                        <GIResult LineNbr="68" SortOrder="68" IsActive="1" Field="refNbr" SchemaField="FSAppointment.ServiceContractID" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="83c15030-c9d1-4886-b9a6-3a5f904676aa" />
+                        <GIResult LineNbr="30" SortOrder="30" IsActive="1" Field="refNbr" SchemaField="FSAppointment.ServiceContractID" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="90e1c5a2-2df6-47e9-9f41-52d19c797a78" />
+                    </GITable>
+                    <GITable Alias="FSCustomer" Name="PX.Objects.FS.FSCustomer">
+                        <GIResult LineNbr="57" SortOrder="57" IsActive="1" Field="acctCD" SchemaField="FSServiceOrder.BillCustomerID" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="b2e0cd86-4aa6-4bf1-8591-99195abef1a7" />
+                        <GIResult LineNbr="19" SortOrder="19" IsActive="1" Field="acctCD" SchemaField="FSServiceOrder.BillCustomerID" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="47a99be4-9d4c-4472-9ad6-6a590397ff0b" />
+                    </GITable>
+                    <GITable Alias="FSBranchLocation" Name="PX.Objects.FS.FSBranchLocation">
+                        <GIResult LineNbr="54" SortOrder="54" IsActive="1" Field="branchLocationCD" SchemaField="FSServiceOrder.BranchLocationID" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="6eaa91f1-e70c-44da-94cc-f711af11f060" />
+                        <GIResult LineNbr="16" SortOrder="16" IsActive="1" Field="branchLocationCD" SchemaField="FSServiceOrder.BranchLocationID" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="21524a77-fde5-4819-bdae-6514b3e1db21" />
+                    </GITable>
+                    <GITable Alias="FSAppointmentEmployee" Name="PX.Objects.FS.FSAppointmentEmployee">
+                        <GIResult LineNbr="73" SortOrder="73" IsActive="1" Field="employeeID_description" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="5d8eca21-4b2c-4eab-8f04-784cb84661d9" />
+                        <GIResult LineNbr="35" SortOrder="35" IsActive="1" Field="employeeID_description" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="87d752c6-63ae-4fbb-ac5a-30c50245eb29" />
+                    </GITable>
+                    <GITable Alias="FSAppointment" Name="PX.Objects.FS.FSAppointment">
+                        <GIRelation LineNbr="32" ChildTable="CurrentBranch" IsActive="1" JoinType="R">
+                            <GIOn LineNbr="38" ParentField="BranchID" Condition="E " ChildField="BranchID" Operation="A" />
+                        </GIRelation>
+                        <GIRelation LineNbr="31" ChildTable="UsersLM" IsActive="1" JoinType="L">
+                            <GIOn LineNbr="37" ParentField="lastModifiedByID" Condition="E " ChildField="pKID" Operation="A" />
+                        </GIRelation>
+                        <GIRelation LineNbr="30" ChildTable="FSAppointmentEmployee" IsActive="1" JoinType="L">
+                            <GIOn LineNbr="36" ParentField="refNbr" Condition="E " ChildField="refNbr" Operation="A" />
+                            <GIOn LineNbr="35" ParentField="srvOrdType" Condition="E " ChildField="srvOrdType" Operation="A" />
+                        </GIRelation>
+                        <GIRelation LineNbr="29" ChildTable="FSServiceContract" IsActive="1" JoinType="L">
+                            <GIOn LineNbr="34" ParentField="serviceContractID" Condition="E " ChildField="serviceContractID" Operation="A" />
+                        </GIRelation>
+                        <GIRelation LineNbr="26" ChildTable="SalesPerson" IsActive="1" JoinType="L">
+                            <GIOn LineNbr="31" ParentField="salesPersonID" Condition="E " ChildField="salesPersonID" Operation="A" />
+                        </GIRelation>
+                        <GIRelation LineNbr="25" ChildTable="FSWFStage" IsActive="1" JoinType="L">
+                            <GIOn LineNbr="30" ParentField="wFStageID" Condition="E " ChildField="wFStageID" Operation="A" />
+                        </GIRelation>
+                        <GIRelation LineNbr="20" ChildTable="Branch" IsActive="1" JoinType="L">
+                            <GIOn LineNbr="23" ParentField="branchID" Condition="E " ChildField="branchID" Operation="A" />
+                        </GIRelation>
+                        <GIRelation LineNbr="19" ChildTable="FSSrvOrdType" IsActive="1" JoinType="L">
+                            <GIOn LineNbr="22" ParentField="srvOrdType" Condition="E " ChildField="srvOrdType" Operation="A" />
+                        </GIRelation>
+                        <GIRelation LineNbr="17" ChildTable="FSServiceOrder" IsActive="1" JoinType="L">
+                            <GIOn LineNbr="20" ParentField="SORefNbr" Condition="E " ChildField="RefNbr" Operation="A" />
+                        </GIRelation>
+                        <GIRelation LineNbr="16" ChildTable="CurrentBranch" IsActive="1" JoinType="R">
+                            <GIOn LineNbr="19" ParentField="branchID" Condition="E " ChildField="branchID" Operation="A" />
+                        </GIRelation>
+                        <GIRelation LineNbr="15" ChildTable="UsersLM" IsActive="1" JoinType="L">
+                            <GIOn LineNbr="18" ParentField="lastModifiedByID" Condition="E " ChildField="pKID" Operation="A" />
+                        </GIRelation>
+                        <GIRelation LineNbr="14" ChildTable="FSAppointmentEmployee" IsActive="1" JoinType="L">
+                            <GIOn LineNbr="17" ParentField="refNbr" Condition="E " ChildField="refNbr" Operation="A" />
+                            <GIOn LineNbr="16" ParentField="srvOrdType" Condition="E " ChildField="srvOrdType" Operation="A" />
+                        </GIRelation>
+                        <GIRelation LineNbr="13" ChildTable="FSServiceContract" IsActive="1" JoinType="L">
+                            <GIOn LineNbr="15" ParentField="serviceContractID" Condition="E " ChildField="serviceContractID" Operation="A" />
+                        </GIRelation>
+                        <GIRelation LineNbr="10" ChildTable="SalesPerson" IsActive="1" JoinType="L">
+                            <GIOn LineNbr="12" ParentField="salesPersonID" Condition="E " ChildField="salesPersonID" Operation="A" />
+                        </GIRelation>
+                        <GIRelation LineNbr="9" ChildTable="FSWFStage" IsActive="1" JoinType="L">
+                            <GIOn LineNbr="11" ParentField="wFStageID" Condition="E " ChildField="wFStageID" Operation="A" />
+                        </GIRelation>
+                        <GIRelation LineNbr="4" ChildTable="Branch" IsActive="1" JoinType="L">
+                            <GIOn LineNbr="4" ParentField="branchID" Condition="E " ChildField="branchID" Operation="A" />
+                        </GIRelation>
+                        <GIRelation LineNbr="3" ChildTable="FSSrvOrdType" IsActive="1" JoinType="L">
+                            <GIOn LineNbr="3" ParentField="srvOrdType" Condition="E " ChildField="srvOrdType" Operation="A" />
+                        </GIRelation>
+                        <GIRelation LineNbr="1" ChildTable="FSServiceOrder" IsActive="1" JoinType="L">
+                            <GIOn LineNbr="1" ParentField="soRefNbr" Condition="E " ChildField="refNbr" Operation="A" />
+                        </GIRelation>
+                        <GIResult LineNbr="76" SortOrder="76" IsActive="1" Field="ActualDateTimeEnd" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="0" RowID="918a4846-3962-4749-8a68-13de27535942" />
+                        <GIResult LineNbr="75" SortOrder="75" IsActive="1" Field="scheduledDateTimeEnd" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="0" RowID="40255d2f-7a34-4853-884b-45b5984e72ee" />
+                        <GIResult LineNbr="74" SortOrder="74" IsActive="1" Field="rOOptimizationStatus" SchemaField="FSAppointment.ROOptimizationStatus" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="32ba5a0f-f591-4dd4-8094-34ebf4e9dbab" />
+                        <GIResult LineNbr="72" SortOrder="72" IsActive="1" Field="waitingForParts" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="105dfe93-8072-403c-83bb-769b27c7f147" />
+                        <GIResult LineNbr="71" SortOrder="71" IsActive="1" Field="validatedByDispatcher" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="6983910f-e356-4503-8355-e9a0609b82e4" />
+                        <GIResult LineNbr="70" SortOrder="70" IsActive="1" Field="confirmed" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="f423d696-ce67-4b11-87ff-0b4508553b82" />
+                        <GIResult LineNbr="69" SortOrder="69" IsActive="1" Field="actualDurationTotal" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="a7d8bcd2-badf-4ff5-8af6-1bc38ce8f233" />
+                        <GIResult LineNbr="65" SortOrder="65" IsActive="1" Field="lastModifiedDateTime" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="0" RowID="7eba2215-6dc8-4b57-b5a9-866aeded15d4" />
+                        <GIResult LineNbr="63" SortOrder="63" IsActive="1" Field="docDesc" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="7d111932-fbfd-40f4-be16-8210920dc50a" />
+                        <GIResult LineNbr="60" SortOrder="60" IsActive="1" Field="createdDateTime" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="0" RowID="11feccc8-91ab-4f9f-9025-dae8f1de8435" />
+                        <GIResult LineNbr="59" SortOrder="59" IsActive="1" Field="createdByID" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="d6c4c1c6-2f37-4dfb-a0fd-d420baec94c3" />
+                        <GIResult LineNbr="49" SortOrder="49" IsActive="1" Field="curyID" IsVisible="1" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="b83d8c12-6489-453c-ae85-d46d7aa22913" />
+                        <GIResult LineNbr="48" SortOrder="48" IsActive="1" Field="curyBillableLineTotal" IsVisible="1" DefaultNav="0" AggregateFunction="MAX" QuickFilter="0" FastFilter="1" RowID="913d0280-f0f1-4fcb-811f-079c9201e214" />
+                        <GIResult LineNbr="47" SortOrder="47" IsActive="1" Field="estimatedDurationTotal" IsVisible="1" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="ef83ffd3-c169-4d80-af64-bae1251b5e21" />
+                        <GIResult LineNbr="44" SortOrder="44" IsActive="1" Field="scheduledDateTimeBegin" IsVisible="1" DefaultNav="0" QuickFilter="0" FastFilter="0" RowID="a154eb46-f042-426f-ab0e-be027d0280f1" />
+                        <GIResult LineNbr="43" SortOrder="43" IsActive="1" Field="executionDate" IsVisible="1" DefaultNav="0" QuickFilter="1" FastFilter="0" RowID="2317085e-9238-49af-b648-f11d9dfa5124" />
+                        <GIResult LineNbr="42" SortOrder="42" IsActive="1" Field="finished" IsVisible="1" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="1e3c8be5-6dc4-4c57-93de-70a5a3042993" />
+                        <GIResult LineNbr="41" SortOrder="41" IsActive="1" Field="status" IsVisible="1" DefaultNav="0" QuickFilter="1" FastFilter="1" RowID="1e8dd3d4-61fc-40f4-b258-3f415af0d8bb" />
+                        <GIResult LineNbr="40" SortOrder="40" IsActive="1" Field="refNbr" IsVisible="1" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="b918e193-5e9a-4ea7-a52e-2c20eabe30dc" />
+                        <GIResult LineNbr="39" SortOrder="39" IsActive="1" Field="SrvOrdType" IsVisible="1" DefaultNav="0" QuickFilter="1" FastFilter="1" RowID="08140fba-5c71-486b-abdd-79b9fb6beb98" />
+                        <GIResult LineNbr="38" SortOrder="38" IsActive="1" Field="actualDateTimeEnd" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="0" RowID="572544ee-4869-4a04-8067-68787d3f7d28" />
+                        <GIResult LineNbr="37" SortOrder="37" IsActive="1" Field="scheduledDateTimeEnd" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="0" RowID="d1aeadbe-cccd-4079-9f83-624364de43ba" />
+                        <GIResult LineNbr="36" SortOrder="36" IsActive="1" Field="rOOptimizationStatus" SchemaField="FSAppointment.ROOptimizationStatus" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="56a4c443-482c-4d28-8b56-5203ab2a48bf" />
+                        <GIResult LineNbr="34" SortOrder="34" IsActive="1" Field="waitingForParts" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="b8ffe38a-b613-41cf-80ea-4eadde4dd5ea" />
+                        <GIResult LineNbr="33" SortOrder="33" IsActive="1" Field="validatedByDispatcher" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="564307dc-6bbd-4671-82b6-7d8cbe2d33c1" />
+                        <GIResult LineNbr="32" SortOrder="32" IsActive="1" Field="confirmed" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="d32ec935-d488-4c51-8ad0-25b4926204fa" />
+                        <GIResult LineNbr="31" SortOrder="31" IsActive="1" Field="actualDurationTotal" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="8d90ea36-40af-4f31-a8c2-322590a09ae4" />
+                        <GIResult LineNbr="27" SortOrder="27" IsActive="1" Field="lastModifiedDateTime" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="0" RowID="1fec8fbd-3d65-4284-8d67-c87e79a5c2c5" />
+                        <GIResult LineNbr="25" SortOrder="25" IsActive="1" Field="docDesc" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="e7db52e8-3553-4405-afeb-ac1bf781405f" />
+                        <GIResult LineNbr="22" SortOrder="22" IsActive="1" Field="createdDateTime" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="0" RowID="6b1507a4-def6-45fb-ad5f-bc3920ac79cc" />
+                        <GIResult LineNbr="21" SortOrder="21" IsActive="1" Field="createdByID" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="fdd4c5e2-f357-41eb-8188-dbf46970c013" />
+                        <GIResult LineNbr="11" SortOrder="11" IsActive="1" Field="curyID" IsVisible="1" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="56cc9719-8fa3-443e-b0a2-e5ac593b82b0" />
+                        <GIResult LineNbr="10" SortOrder="10" IsActive="1" Field="curyBillableLineTotal" IsVisible="1" DefaultNav="0" AggregateFunction="MAX" QuickFilter="0" FastFilter="1" RowID="85288532-1045-4f7a-98a4-0afcf6c1bee9" />
+                        <GIResult LineNbr="9" SortOrder="9" IsActive="1" Field="estimatedDurationTotal" IsVisible="1" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="7bd5ca27-d51c-4a7b-851d-3790cb6dee2f" />
+                        <GIResult LineNbr="6" SortOrder="6" IsActive="1" Field="scheduledDateTimeBegin" IsVisible="1" DefaultNav="0" QuickFilter="0" FastFilter="0" RowID="1c3bb3e4-d510-451c-b6ce-e4552885a3c0" />
+                        <GIResult LineNbr="5" SortOrder="5" IsActive="1" Field="executionDate" IsVisible="1" DefaultNav="0" QuickFilter="1" FastFilter="0" RowID="1599bebe-2560-44ac-9620-2c2893c07bc5" />
+                        <GIResult LineNbr="4" SortOrder="4" IsActive="1" Field="finished" IsVisible="1" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="e4c14a07-6637-46ee-87e4-d36cc43cdf57" />
+                        <GIResult LineNbr="3" SortOrder="3" IsActive="1" Field="status" IsVisible="1" DefaultNav="0" QuickFilter="1" FastFilter="1" RowID="33508bcc-2df7-4caf-b9ae-0fea4b2c44fc" />
+                        <GIResult LineNbr="2" SortOrder="2" IsActive="1" Field="refNbr" IsVisible="1" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="0936ab18-f325-43f0-bf35-8f2c3e8e4914" />
+                        <GIResult LineNbr="1" SortOrder="1" IsActive="1" Field="srvOrdType" IsVisible="1" DefaultNav="0" QuickFilter="1" FastFilter="1" RowID="d0602b4d-4d6d-4e3b-9449-461d6862c282" />
+                    </GITable>
+                    <GITable Alias="EPEmployee" Name="PX.Objects.EP.EPEmployee">
+                        <GIResult LineNbr="66" SortOrder="66" IsActive="1" Field="acctName" SchemaField="FSServiceOrder.AssignedEmpID" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="1a947af1-1c07-40ed-be7b-a304da250ab8" />
+                        <GIResult LineNbr="28" SortOrder="28" IsActive="1" Field="acctName" SchemaField="FSServiceOrder.AssignedEmpID" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="047d35be-b423-452b-9cd7-bc641c08d057" />
+                    </GITable>
+                    <GITable Alias="CurrentBranch" Name="PX.Objects.GL.CurrentBranch" />
+                    <GITable Alias="Branch" Name="PX.Objects.GL.Branch">
+                        <GIResult LineNbr="53" SortOrder="53" IsActive="1" Field="acctName" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="67836de4-0c46-4fd2-8608-637357850b2b" />
+                        <GIResult LineNbr="52" SortOrder="52" IsActive="1" Field="branchCD" SchemaField="FSAppointment.BranchID" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="244119f2-b81e-4c19-8ab3-e802b62d5f34" />
+                        <GIResult LineNbr="15" SortOrder="15" IsActive="1" Field="acctName" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="e207834a-8c79-4e68-a814-737359ba006d" />
+                        <GIResult LineNbr="14" SortOrder="14" IsActive="1" Field="branchCD" SchemaField="FSAppointment.BranchID" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="088bfc9e-8604-4098-99a2-06d0ab4648ac" />
+                    </GITable>
+                    <GITable Alias="BAccount" Name="PX.Objects.CR.BAccount">
+                        <GIResult LineNbr="46" SortOrder="46" IsActive="1" Field="acctName" IsVisible="1" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="34feb993-0abc-48a7-a972-6ea594732c98" />
+                        <GIResult LineNbr="45" SortOrder="45" IsActive="1" Field="acctCD" SchemaField="FSServiceOrder.CustomerID" IsVisible="1" DefaultNav="0" QuickFilter="1" FastFilter="1" RowID="486c274d-95d4-43d4-9c16-82fa92b0431d" />
+                        <GIResult LineNbr="8" SortOrder="8" IsActive="1" Field="acctName" IsVisible="1" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="57d38001-71c6-4202-bce2-6e80d95bc952" />
+                        <GIResult LineNbr="7" SortOrder="7" IsActive="1" Field="acctCD" SchemaField="FSServiceOrder.CustomerID" IsVisible="1" DefaultNav="0" QuickFilter="1" FastFilter="1" RowID="89a27820-0fbe-42ae-ab8e-0f2a53a80871" />
+                    </GITable>
+                    <SiteMap linkname="toDesignById">
+                        <row Title="Unassigned Appointments" Url="~/GenericInquiry/GenericInquiry.aspx?id=5ffe4263-032c-446c-b363-b9fc1908bc2f" ScreenID="GI640101" NodeID="bff954cf-a5ee-4ce3-bd7c-278be1d2315d" ParentID="00000000-0000-0000-0000-000000000000">
+                            <MUIScreen IsPortal="0" WorkspaceID="bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb" Order="640302" SubcategoryID="98e86774-69e3-41ea-b94f-eb2c7a8426d4">
+                                <MUIPinnedScreen IsPortal="0" Username="" IsPinned="1" />
+                            </MUIScreen>
+                        </row>
+                    </SiteMap>
+                    <SiteMap linkname="to1Screen">
+                        <row Position="2" Title="Appointments" Url="~/Pages/FS/FS300200.aspx" NodeID="683cee30-0571-443a-8298-7d8281116c94" ParentID="43c55fae-b3fd-42a9-b29b-7331167d143a">
+                            <MUIScreen IsPortal="0" WorkspaceID="f0cf4498-99c4-48f3-8dd8-bde9ed67f9d3" Order="20" SubcategoryID="38d13a6e-3076-42fb-9fce-62fa33897da6">
+                                <MUIPinnedScreen IsPortal="0" Username="" IsPinned="1" />
+                            </MUIScreen>
+                            <MUITile IsPortal="0" TileID="176a9a9a-b56d-4038-a71a-27a9af38e382" WorkspaceID="f0cf4498-99c4-48f3-8dd8-bde9ed67f9d3" Order="20" Title="New Appointment" Icon="event_add" Parameters="" />
+                        </row>
+                    </SiteMap>
+                </row>
+            </GIDesign>
+            <MUIWorkspace>
+                <row IsPortal="1" WorkspaceID="bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb" Order="5" Title="Data Views" Icon="poll" IsSystem="1">
+                    <MUIFavoriteWorkspace IsPortal="0" Username="" IsFavorite="1" />
+                </row>
+                <row IsPortal="0" WorkspaceID="bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb" Order="32" Title="Data Views" Icon="poll" IsSystem="1">
+                    <MUIFavoriteWorkspace IsPortal="0" Username="" IsFavorite="1" />
+                </row>
+                <row IsPortal="0" WorkspaceID="f0cf4498-99c4-48f3-8dd8-bde9ed67f9d3" Order="805" Title="Services" Icon="work" AreaID="62cfd5dc-8eb9-4e92-bbcd-e0a99eb5e5df" ScreenID="WSFS0000" IsSystem="0" />
+            </MUIWorkspace>
+            <MUISubcategory>
+                <row IsPortal="1" SubcategoryID="98e86774-69e3-41ea-b94f-eb2c7a8426d4" Order="896" Name="Inquiries" Icon="" IsSystem="1" />
+                <row IsPortal="0" SubcategoryID="98e86774-69e3-41ea-b94f-eb2c7a8426d4" Order="896" Name="Inquiries" Icon="" IsSystem="1" />
+                <row IsPortal="0" SubcategoryID="38d13a6e-3076-42fb-9fce-62fa33897da6" Order="64" Name="Transactions" Icon="" IsSystem="0" />
+            </MUISubcategory>
+            <MUIArea>
+                <row IsPortal="0" AreaID="62cfd5dc-8eb9-4e92-bbcd-e0a99eb5e5df" Order="20" Name="Operations" />
+            </MUIArea>
+        </data>
+    </data-set>
+</GenericInquiryScreen>

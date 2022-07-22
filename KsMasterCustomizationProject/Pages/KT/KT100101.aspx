@@ -2,7 +2,7 @@
 <%@ MasterType VirtualPath="~/MasterPages/FormDetail.master" %>
 
 <asp:Content ID="cont1" ContentPlaceHolderID="phDS" Runat="Server">
-	<px:PXDataSource PageLoadBehavior="PopulateSavedValues" ID="ds" runat="server" Visible="True" Width="100%"
+	<px:PXDataSource PageLoadBehavior="PopulateSavedValues" ID="ds" runat="server" Visible="" Width="100%"
         TypeName="KsMasterCustomizationProject.APInvoiceVendorDuplicatesInq"
         PrimaryView="MasterView"
         >

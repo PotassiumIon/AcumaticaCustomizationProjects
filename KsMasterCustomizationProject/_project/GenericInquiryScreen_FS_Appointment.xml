@@ -206,6 +206,9 @@
                         <GIResult LineNbr="35" SortOrder="35" IsActive="1" Field="employeeID_description" IsVisible="0" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="c0eebcfe-3659-4cae-9e27-99095ea7ab38" />
                     </GITable>
                     <GITable Alias="FSAppointment" Name="PX.Objects.FS.FSAppointment">
+                        <GIRelation LineNbr="16" ChildTable="CurrentBranch" IsActive="1" JoinType="R">
+                            <GIOn LineNbr="19" ParentField="branchID" Condition="E " ChildField="branchID" Operation="A" />
+                        </GIRelation>
                         <GIRelation LineNbr="15" ChildTable="UsersLM" IsActive="1" JoinType="L">
                             <GIOn LineNbr="18" ParentField="lastModifiedByID" Condition="E " ChildField="pKID" Operation="A" />
                         </GIRelation>
